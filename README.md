@@ -1,5 +1,3 @@
 MapStoryComposer
 ================
-Design Mockup
-Editing for Story Layers
-
+Design Mockup: Editing for Story Layers

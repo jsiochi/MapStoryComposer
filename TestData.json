@@ -1,0 +1,19 @@
+{
+    "geodata" : [
+        { "geom" : "point", 
+         "data" : [{"id": 1, 
+                    "value": 20, 
+                    "lat": 200, 
+                    "long": 400},
+                    {"id": 2, 
+                     "value": 10, 
+                     "lat": 300, 
+                     "long": 400},
+                    {"id": 3, 
+                     "value": 16, 
+                     "lat": 250, 
+                     "long": 650}
+                  ]}
+        
+    ]
+}
