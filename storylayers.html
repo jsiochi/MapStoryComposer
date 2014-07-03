@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html ng-app="storylayer">
-  <head>
+<html ng-app="storylayers">
+
+<head>
     <title>MapStory 7</title>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
-      <script src="assets/js/ui-bootstrap-tpls-0.9.0.min.js"></script>
-      <link href="assets/css/bootstrap.css" rel="stylesheet">
-      <script src="storylayer.js"></script>
-  </head>
-    <body>
-        <accordion close-others="1">
-            <accordion-group heading="Static Header, initially expanded" is-open="1">
-                This content is straight in the template.
-            </accordion-group>
-            <accordion-group heading="Static Header, initially closed" is-open="0">
-                This content is also straight in the template.
-            </accordion-group>
-        </accordion>
-    </body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.9.0.min.js"></script>
+    
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body ng-controller="drawCtrl">
+    <accordion close-others="1">
+        <accordion-group heading="Static Header, initially expanded" is-open="1">
+            This content is straight in the template.
+        </accordion-group>
+        <accordion-group heading="Static Header, initially closed" is-open="0">
+            Some other content.
+        </accordion-group>
+    </accordion>
+    <div id="container">
+        <canvas id="layerspace"></canvas>
+    </div>
+
+
+</body>
+
 </html>
