@@ -13,19 +13,44 @@
 </head>
 
 <body ng-controller="drawCtrl">
-    <accordion close-others="1">
-        <accordion-group heading="Static Header, initially expanded" is-open="1">
-            This content is straight in the template.
-        </accordion-group>
-        <accordion-group heading="Static Header, initially closed" is-open="0">
-            Some other content.
-        </accordion-group>
-    </accordion>
-    <div id="container">
-        <canvas id="layerspace"></canvas>
-    </div>
-
-
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<accordion close-others="1">
+        			<accordion-group heading="StoryLayer A Title" is-open="1">
+            			<!--carousel template-->
+            			<div ng-controller="CarouselDemoCtrl">
+  							<div style="height: 305px">
+    							<carousel interval="myInterval">
+      								<slide ng-repeat="slide in slides" active="slide.active">
+      									<!--placeholder for style previews-->
+        								<img ng-src="{{slide.image}}" style="margin:auto;">
+        							</slide>
+   				 				</carousel>
+  							</div>
+  							<div class="row">
+    							<div class="col-md-12">
+      								<div class="carousel-caption">
+          								<!--placeholder for style options like buttons etc-->
+          								<h4>Slide {{$index}}</h4>
+          								<p>{{slide.text}}</p>
+        							</div>
+    							</div>
+  							</div>
+						</div>
+        			</accordion-group>
+        			<accordion-group heading="StoryLayer B Title" is-open="0">
+            			Some other content.
+        			</accordion-group>
+    			</accordion>
+			</div>
+			<div class="col-sm-8">
+				<div id="container">
+        			<canvas id="layerspace"></canvas>
+   				</div>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
