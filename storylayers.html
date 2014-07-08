@@ -10,6 +10,7 @@
     <script src="js/ui-bootstrap-tpls-0.9.0.min.js"></script>
     
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 </head>
 
 <body ng-controller="drawCtrl">
@@ -20,24 +21,87 @@
         			<accordion-group heading="StoryLayer A Title" is-open="1">
             			<!--carousel template-->
             			<div ng-controller="CarouselDemoCtrl">
-  							<div style="height: 305px">
+  							<div style="height: 150px">
     							<carousel interval="myInterval">
       								<slide ng-repeat="slide in slides" active="slide.active">
       									<!--placeholder for style previews-->
-        								<img ng-src="{{slide.image}}" style="margin:auto;">
+        								<img ng-src="img/PTsimple.png" style="margin:auto;">
         							</slide>
    				 				</carousel>
+   				 			</div>
+   				 			<div class="container" style="border-top:1px solid gainsboro">
+   				 				<div class="row">
+    								<div class="col-md-12">
+    									<!--placeholder for style options like buttons etc-->
+          								<div id="symboltmpl" class="styletmpl">
+          									<!--template-->
+          									<div class="tmpl-header">Symbology panel</div>
+          									<form class="tmpl-content">
+          										<div class="form-group" ng-controller="DropdownCtrl">
+													<div class="btn-toolbar">
+														<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Symbol <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Circle</a></li>
+        														<li><a href="#">Triangle</a></li>
+       	 														<li><a href="#">Square</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Size <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">1</a></li>
+        														<li><a href="#">2</a></li>
+       	 														<li><a href="#">3</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Color <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Blue</a></li>
+        														<li><a href="#">Red</a></li>
+       	 														<li><a href="#">Green</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Alpha <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">100%</a></li>
+        														<li><a href="#">75%</a></li>
+       	 														<li><a href="#">50%</a></li>
+       	 														<li><a href="#">25%</a></li>
+      														</ul>
+    													</div>
+													</div>
+												</div>
+											</form>
+          								</div>
+          								<!--
+          								<div id="classtmpl" class="styletmpl">
+          									<div class="tmpl-header">Classification panel</div>	
+          								</div>
+          								<div id="filltmpl" class="styletmpl">
+          									<div class="tmpl-header">Fill panel</div>
+          								</div>
+          								<div id="stroketmpl" class="styletmpl">
+          									<div class="tmpl-header">Stroke panel</div>
+          								</div>
+          								<div id="labeltmpl" class="styletmpl">
+          									<div class="tmpl-header">Label panel</div>
+          								</div>
+          								-->
+									</div>
+								</div>
   							</div>
-  							<div class="row">
-    							<div class="col-md-12">
-      								<div class="carousel-caption">
-          								<!--placeholder for style options like buttons etc-->
-          								<h4>Slide {{$index}}</h4>
-          								<p>{{slide.text}}</p>
-        							</div>
-    							</div>
-  							</div>
-						</div>
+  						</div>
         			</accordion-group>
         			<accordion-group heading="StoryLayer B Title" is-open="0">
             			Some other content.

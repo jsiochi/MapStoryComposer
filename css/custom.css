@@ -1,0 +1,14 @@
+.styletmpl {
+	padding: 10px;
+	border: 1px solid gainsboro;
+	margin: 5px;
+}
+
+.tmpl-header {
+	font-size: 1.3em;
+	border-bottom: 1px solid darkgray;
+}
+
+.tmpl-content {
+	padding: 10px;
+}
