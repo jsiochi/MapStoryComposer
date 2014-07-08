@@ -1,1 +1,1 @@
-angular.module('storylayers', ['storylayers.controllers','ui.bootstrap']);
+angular.module('storylayers', ['storylayers.services','storylayers.controllers','ui.bootstrap']);
