@@ -21,7 +21,7 @@
 				<accordion close-others="1">
         			<accordion-group heading="StoryLayer A Title" is-open="1">
             			<!--carousel template-->
-            			<div ng-controller="CarouselDemoCtrl">
+            			<div>
   							<div style="height: 150px">
     							<carousel interval="myInterval">
       								<slide ng-repeat="slide in slides" active="slide.active">
@@ -38,19 +38,33 @@
           									<!--template-->
           									<div class="tmpl-header">Symbology panel</div>
           									<form class="tmpl-content">
-          										<div class="form-group" ng-controller="DropdownCtrl">
+          										<div class="form-group">
 													<div class="btn-toolbar">
-														<div class="btn-group" dropdown is-open="status.isopen">
+<!--
+                                                        <div class="dropdown">
+                                                            <a class="btn btn-default" data-toggle="dropdown" href="#">Symbol<b class="caret"></b></a>
+                                                            <ul class="dropdown-menu" role="menu">
+                                                                <li>
+                                                                    <a>Circle</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a>Triangle</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a>Square</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+-->
+														<div class="btn-group" dropdown is-open="false">
       														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
         														Symbol <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">Circle</a></li>
-        														<li><a href="#">Triangle</a></li>
-       	 														<li><a href="#">Square</a></li>
+        														<li ng-repeat="type in symbols"><a href="#">{{type}}</a></li>
       														</ul>
     													</div>
-    													<div class="btn-group" dropdown is-open="status.isopen">
+    													<div class="btn-group" dropdown is-open="0">
       														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
         														Size <span class="caret"></span>
       														</button>
@@ -60,17 +74,17 @@
        	 														<li><a href="#">3</a></li>
       														</ul>
     													</div>
-    													<div class="btn-group" dropdown is-open="status.isopen">
+    													<div class="btn-group" dropdown is-open="0">
       														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
         														Color <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">Blue</a></li>
-        														<li><a href="#">Red</a></li>
-       	 														<li><a href="#">Green</a></li>
+        														<li><a href="#" ng-click="updateStyle('Fill','Blue')">Blue</a></li>
+        														<li><a href="#" ng-click="updateStyle('Fill','Red')">Red</a></li>
+       	 														<li><a href="#" ng-click="updateStyle('Fill','Green')">Green</a></li>
       														</ul>
     													</div>
-    													<div class="btn-group" dropdown is-open="status.isopen">
+    													<div class="btn-group" dropdown is-open="0">
       														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
         														Alpha <span class="caret"></span>
       														</button>
@@ -111,7 +125,7 @@
 			</div>
 			<div class="col-sm-8">
 				<div id="container">
-        			<canvas id="layerspace" width="500" height="500" ng-click="dooby()"></canvas>
+        			<canvas id="layerspace" width="500" height="500"></canvas>
    				</div>
 			</div>
 		</div>
