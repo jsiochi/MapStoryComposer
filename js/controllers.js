@@ -1,24 +1,14 @@
-angular.module('storylayers.controllers', [])
-    .controller('drawCtrl', ['$scope', function ($scope) {
-        var canvas = document.getElementById('layerspace');
-        var context = canvas.getContext('2d');
+angular.module('storylayers.controllers', ['storylayers.services'])
+    .controller('drawCtrl', ['$scope', 'drawSpace', 'dataLoader', function ($scope, drawSpace, dataLoader) {
+        drawSpace.drawCircle({x: 300, y: 300}, 80);
+        drawSpace.drawSquare({x: 200, y: 200}, 50);
+        drawSpace.drawTriangle({x: 400, y: 450}, 100);
         
-        canvas.width = 500;
-        canvas.height = 500;
+        var yes = dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/TestData.json');
         
-        context.beginPath();
-        context.moveTo(50,50);
-        context.lineTo(100, 300);
-        context.strokeStyle = 'black';
-        context.stroke();
-        
-        context.fillStyle = 'blue';
-        drawCircle({x: 200, y: 400}, 30);
-        
-        /* helper functions for drawing */
-        function drawCircle(point, radius) {
-            context.beginPath();
-            context.arc(point.x, point.y, radius, 0, 2*Math.PI);
-            context.fill();
-        }
+        $scope.slides = [{image: '../MapStoryComposer/img/styleslides/PTsimple.png', active: true},
+                         {image: '../MapStoryComposer/img/styleslides/LNchoropleth.png', active: false}, 
+                         {image: '../MapStoryComposer/img/styleslides/LNsimple.png', active: false},
+                         {image: '../MapStoryComposer/img/styleslides/LNsymbols.png', active: false},
+                         {image: '../MapStoryComposer/img/styleslides/LNunique.png', active: false}];
     }]);
