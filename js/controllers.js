@@ -11,4 +11,6 @@ angular.module('storylayers.controllers', ['storylayers.services'])
                          {image: '../MapStoryComposer/img/styleslides/LNsimple.png', active: false},
                          {image: '../MapStoryComposer/img/styleslides/LNsymbols.png', active: false},
                          {image: '../MapStoryComposer/img/styleslides/LNunique.png', active: false}];
+        
+        
     }]);
