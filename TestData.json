@@ -1,85 +1,79 @@
 {
-    "geodata" : [
-    	{ 
-        	"layer_name" : "point_layer",
-        	"geom" : "point", 
-         	"data" : [
-         				{
-         					"id": 1,
-         					"name" : "Mt. Everest", 
-                    		"value": 20, 
-                    		"lat": 200, 
-                    		"long": 400
-                    	},
-                    	{	
-                    		"id": 2, 
-                     		"name": "Mt. McKinley",
-                     		"value": 10, 
-                     		"lat": 300, 
-                     		"long": 400
-                     	},
-                    	{	
-                    		"id": 3, 
-                     		"name": "Mt. Kilimanjaro",
-                     		"value": 16, 
-                     		"lat": 250, 
-                     		"long": 650
-                     	}
-                  	]
-        },
-        { 
-        	"layer_name" : "line_layer",
-        	"geom" : "line", 
-         	"data" : [
-         				{
-         					"id": 4,
-         					"name" : "Indus River", 
-                    		"value": 20, 
-                    		"lat": 200, 
-                    		"long": 400
-                    	},
-                    	{	
-                    		"id": 5, 
-                     		"name": "Nile River",
-                     		"value": 10, 
-                     		"lat": 300, 
-                     		"long": 400
-                     	},
-                    	{	
-                    		"id": 6, 
-                     		"name": "Amazon River",
-                     		"value": 16, 
-                     		"lat": 250, 
-                     		"long": 650
-                     	}
-                  	]
-        },
-        { 
-        	"layer_name" : "poly_layer",
-        	"geom" : "polygon", 
-         	"data" : [
-         				{
-         					"id": 7,
-         					"name" : "China", 
-                    		"value": 20, 
-                    		"lat": 200, 
-                    		"long": 400
-                    	},
-                    	{	
-                    		"id": 8, 
-                     		"name": "United States",
-                     		"value": 10, 
-                     		"lat": 300, 
-                     		"long": 400
-                     	},
-                    	{	
-                    		"id": 9, 
-                     		"name": "Great Britain",
-                     		"value": 16, 
-                     		"lat": 250, 
-                     		"long": 650
-                     	}
-                  	]
-        }
-    ]
+  "type": "TestGeometry",
+  "layers": [
+    {
+      	"type": "Feature",
+      	"name": "Point_Layer",
+      	"geometry": 
+      		{
+    			"type": "MultiPoint", 
+    			"coordinates": 
+    				[
+        				[10, 40], [40, 30], [20, 20], [30, 10]
+    				]
+      		},
+      	"properties": 
+      		{
+      			"names":
+      				[
+      					["a"], ["b"], ["c"], ["d"]
+      				],
+      			"values":
+      				[
+      					[0], [1], [2], [3]
+      				]
+      		}
+      
+    },
+    {
+      "type": "Feature",
+      "name": "Line_Layer",
+      "geometry": {
+        "type": "MultiLineString", 
+    	"coordinates": 
+    		[
+        		[[10, 10], [20, 20], [10, 40]], 
+        		[[40, 40], [30, 30], [40, 20], [30, 10]]
+    		]
+      },
+      "properties": 
+      		{
+      			"names":
+      				[
+      					["ab"], ["bc"]
+      				],
+      			"values":
+      				[
+      					[0], [1]
+      				]
+      		}
+    },
+    {
+      "type": "Feature",
+      "name": "Polygon_Layer",
+      "geometry": {
+        "type": "MultiPolygon", 
+    	"coordinates": 
+    		[
+        		[
+            		[[30, 20], [45, 40], [10, 40], [30, 20]]
+        		], 
+        		[
+            		[[15, 5], [40, 10], [10, 20], [5, 10], [15, 5]]
+        		]
+    		]
+      },
+      "properties": 
+      		{
+      			"names":
+      				[
+      					["abcd"], ["bcde"]
+      				],
+      			"values":
+      				[
+      					[0], [1]
+      				]
+      		}
+    }
+  ]
 }
