@@ -1,19 +1,85 @@
 {
     "geodata" : [
-        { "geom" : "point", 
-         "data" : [{"id": 1, 
-                    "value": 20, 
-                    "lat": 200, 
-                    "long": 400},
-                    {"id": 2, 
-                     "value": 10, 
-                     "lat": 300, 
-                     "long": 400},
-                    {"id": 3, 
-                     "value": 16, 
-                     "lat": 250, 
-                     "long": 650}
-                  ]}
-        
+    	{ 
+        	"layer_name" : "point_layer",
+        	"geom" : "point", 
+         	"data" : [
+         				{
+         					"id": 1,
+         					"name" : "Mt. Everest", 
+                    		"value": 20, 
+                    		"lat": 200, 
+                    		"long": 400
+                    	},
+                    	{	
+                    		"id": 2, 
+                     		"name": "Mt. McKinley",
+                     		"value": 10, 
+                     		"lat": 300, 
+                     		"long": 400
+                     	},
+                    	{	
+                    		"id": 3, 
+                     		"name": "Mt. Kilimanjaro",
+                     		"value": 16, 
+                     		"lat": 250, 
+                     		"long": 650
+                     	}
+                  	]
+        },
+        { 
+        	"layer_name" : "line_layer",
+        	"geom" : "line", 
+         	"data" : [
+         				{
+         					"id": 4,
+         					"name" : "Indus River", 
+                    		"value": 20, 
+                    		"lat": 200, 
+                    		"long": 400
+                    	},
+                    	{	
+                    		"id": 5, 
+                     		"name": "Nile River",
+                     		"value": 10, 
+                     		"lat": 300, 
+                     		"long": 400
+                     	},
+                    	{	
+                    		"id": 6, 
+                     		"name": "Amazon River",
+                     		"value": 16, 
+                     		"lat": 250, 
+                     		"long": 650
+                     	}
+                  	]
+        },
+        { 
+        	"layer_name" : "poly_layer",
+        	"geom" : "polygon", 
+         	"data" : [
+         				{
+         					"id": 7,
+         					"name" : "China", 
+                    		"value": 20, 
+                    		"lat": 200, 
+                    		"long": 400
+                    	},
+                    	{	
+                    		"id": 8, 
+                     		"name": "United States",
+                     		"value": 10, 
+                     		"lat": 300, 
+                     		"long": 400
+                     	},
+                    	{	
+                    		"id": 9, 
+                     		"name": "Great Britain",
+                     		"value": 16, 
+                     		"lat": 250, 
+                     		"long": 650
+                     	}
+                  	]
+        }
     ]
 }

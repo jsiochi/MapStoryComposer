@@ -15,7 +15,8 @@
 </head>
 
 <body ng-controller="drawCtrl">
-	<div class="container">
+	<iframe style="position:absolute; z-index:0" width="100%" height="800" src="http://maps.stamen.com/watercolor/embed#12/38.8988/-77.0817"></iframe>
+	<div class="container" style="z-index:1">
 		<div class="row">
 			<div class="col-sm-4">
 				<accordion close-others="1">
@@ -85,20 +86,206 @@
 												</div>
 											</form>
           								</div>
-          								<!--
-          								<div id="classtmpl" class="styletmpl">
-          									<div class="tmpl-header">Classification panel</div>	
-          								</div>
           								<div id="filltmpl" class="styletmpl">
+          									<!--template-->
           									<div class="tmpl-header">Fill panel</div>
+          									<form class="tmpl-content">
+          										<div class="form-group" ng-controller="DropdownCtrl">
+													<div class="btn-toolbar">
+														<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Fill <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Solid</a></li>
+        														<li><a href="#">Checkered</a></li>
+       	 														<li><a href="#">Striped</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Color <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Blue</a></li>
+        														<li><a href="#">Red</a></li>
+       	 														<li><a href="#">Green</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Alpha <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">100%</a></li>
+        														<li><a href="#">75%</a></li>
+       	 														<li><a href="#">50%</a></li>
+       	 														<li><a href="#">25%</a></li>
+      														</ul>
+    													</div>
+													</div>
+												</div>
+											</form>
           								</div>
           								<div id="stroketmpl" class="styletmpl">
-          									<div class="tmpl-header">Stroke panel</div>
+          									<!--template-->
+          									<div class="tmpl-header">Strokes panel</div>
+          									<form class="tmpl-content">
+          										<div class="form-group" ng-controller="DropdownCtrl">
+													<div class="btn-toolbar">
+														<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Stroke <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Solid</a></li>
+        														<li><a href="#">Dashed</a></li>
+       	 														<li><a href="#">Dotted</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Weight <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">1</a></li>
+        														<li><a href="#">2</a></li>
+       	 														<li><a href="#">3</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Color <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Blue</a></li>
+        														<li><a href="#">Red</a></li>
+       	 														<li><a href="#">Green</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Alpha <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">100%</a></li>
+        														<li><a href="#">75%</a></li>
+       	 														<li><a href="#">50%</a></li>
+       	 														<li><a href="#">25%</a></li>
+      														</ul>
+    													</div>
+													</div>
+												</div>
+											</form>
           								</div>
-          								<div id="labeltmpl" class="styletmpl">
+          								<div id="classtmpl" class="styletmpl">
+          									<!--template-->
+          									<div class="tmpl-header">Classification panel</div>
+          									<form class="tmpl-content">
+          										<div class="form-group" ng-controller="DropdownCtrl">
+													<div class="btn-toolbar">
+														<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Source <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Column 1</a></li>
+        														<li><a href="#">Column 2</a></li>
+       	 														<li><a href="#">Column 3</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Scheme <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Natural</a></li>
+        														<li><a href="#">Normal</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Classes <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">3</a></li>
+        														<li><a href="#">5</a></li>
+       	 														<li><a href="#">7</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Type <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Color</a></li>
+        														<li><a href="#">Size</a></li>
+       	 														<li><a href="#">Random</a></li>
+      														</ul>
+    													</div>
+    												</div>
+												</div>
+											</form>
+          								</div>
+          								<div id="symboltmpl" class="styletmpl">
+          									<!--template-->
           									<div class="tmpl-header">Label panel</div>
+          									<form class="tmpl-content">
+          										<div class="form-group" ng-controller="DropdownCtrl">
+													<div class="btn-toolbar">
+														<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Source <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Column 1</a></li>
+        														<li><a href="#">Column 2</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Size <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">1</a></li>
+        														<li><a href="#">2</a></li>
+       	 														<li><a href="#">3</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Font <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Arial</a></li>
+        														<li><a href="#">Helvetica</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Color <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Red</a></li>
+        														<li><a href="#">Blue</a></li>
+       	 														<li><a href="#">Black</a></li>
+      														</ul>
+    													</div>
+    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+        														Position <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+        														<li><a href="#">Left</a></li>
+        														<li><a href="#">Right</a></li>
+       	 														<li><a href="#">Top</a></li>
+       	 														<li><a href="#">Bottom</a></li>
+      														</ul>
+    													</div>
+													</div>
+												</div>
+											</form>
           								</div>
-          								-->
 									</div>
 								</div>
   							</div>

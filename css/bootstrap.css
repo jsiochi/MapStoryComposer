@@ -1435,7 +1435,7 @@ textarea.form-control {
   height: auto; }
 
 .form-group {
-  margin-bottom: 15px; }
+  margin-bottom: 0px; }
 
 .radio,
 .checkbox {
@@ -1633,7 +1633,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 .btn {
   display: inline-block;
   padding: 6px 12px;
-  margin-bottom: 0;
+  margin-bottom: 5px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.42857;
