@@ -1,6 +1,13 @@
 angular.module('storylayers.controllers', ['storylayers.services'])
     .controller('drawCtrl', ['$scope', 'drawSpace', 'dataLoader', function ($scope, drawSpace, dataLoader) {
-        var yes = dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/TestData.json');
+        
+        var points = [];
+        
+        dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/TestData.json').success(function(data) {
+            points = data.geodata.data;
+            console.log(points);
+            drawStuff();
+        });
         
         dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/styles.json').success(function(data) {
                 $scope.presets = data;
@@ -20,11 +27,9 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         };
         
         function drawStuff() {
-            drawSpace.drawPoint({x: 300, y: 300}, 20);
-            drawSpace.drawPoint({x: 200, y: 200}, 30);
-            drawSpace.drawPoint({x: 400, y: 450}, 25);
+            for(i = 0; i < points.length; i++) {
+                drawSpace.drawPoint({x: points[i].lat, y: points[i].long}, points[i].value);
+                console.log(points[i]);
+            }
         }
-        
-        drawStuff();
-        
     }]);
