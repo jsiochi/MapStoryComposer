@@ -27,7 +27,7 @@
     							<carousel interval="myInterval">
       								<slide ng-repeat="slide in slides" active="slide.active">
       									<!--placeholder for style previews-->
-        								<img ng-src="img/PTsimple.png" style="margin:auto;">
+        								<img ng-src="{{slide.image}}" style="margin:auto;">
         							</slide>
    				 				</carousel>
    				 			</div>
@@ -35,7 +35,7 @@
    				 				<div class="row">
     								<div class="col-md-12">
     									<!--placeholder for style options like buttons etc-->
-          								<div id="symboltmpl" class="styletmpl">
+          								<div id="symboltmpl" class="styletmpl" ng-show="showPanel('Symbol')">
           									<!--template-->
           									<div class="tmpl-header">Symbology panel</div>
           									<form class="tmpl-content">
@@ -101,7 +101,7 @@
 												</div>
 											</form>
           								</div>
-          								<div id="filltmpl" class="styletmpl">
+          								<div id="filltmpl" class="styletmpl" ng-show="showPanel('Fill')">
           									<!--template-->
           									<div class="tmpl-header">Fill panel</div>
           									<form class="tmpl-content">
