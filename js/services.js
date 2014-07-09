@@ -2,32 +2,70 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
     var canvas = document.getElementById('layerspace');
     var context = canvas.getContext('2d');
     
-    context.fillStyle = 'blue';
+    context.fillStyle = 'Black';
     context.strokeStyle = 'red';
     
+    var symbolStyle = 'Circle';
+    var sizeMultiplier = 1;
+    
+    function drawCircle(point, size) {
+        context.beginPath();
+        context.arc(point.x, point.y, size/2, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+    }
+    
+    function drawSquare(point, size) {
+        context.beginPath();
+        context.rect(point.x - size / 2, point.y - size / 2, size, size);
+        context.fill();
+        context.stroke();
+    }
+    
+    function drawTriangle(point, size) {
+        context.beginPath();
+        context.moveTo(point.x, point.y - 0.57735 * size);
+        context.lineTo(point.x + size / 2, point.y + 0.288675 * size);
+        context.lineTo(point.x - size / 2, point.y + 0.288675 * size);
+        context.closePath();
+        context.fill();
+        context.stroke();
+    }
+    
     var drawSpace = {
-        drawCircle: function (point, radius) {
-            context.beginPath();
-            context.arc(point.x, point.y, radius, 0, 2 * Math.PI);
-            context.fill();
-            context.stroke();
+        changeStyle: function (property, value) {
+            switch(property) {
+                    case 'Fill':
+                        context.fillStyle = value;
+                        break;
+                    case 'Alpha':
+                        context.globalAlpha = value;
+                        break;
+                    case 'Symbol':
+                        symbolStyle = value;
+                        break;
+                    case 'Size':
+                        sizeMultiplier = value;
+                        break;
+            }
         },
-
-        drawSquare: function (point, size) {
-            context.beginPath();
-            context.rect(point.x - size / 2, point.y - size / 2, size, size);
-            context.fill();
-            context.stroke();
+        
+        drawPoint: function (point, size) {
+            switch(symbolStyle) {
+                    case 'Circle':
+                        drawCircle(point, size * sizeMultiplier);
+                        break;
+                    case 'Square':
+                        drawSquare(point, size * sizeMultiplier);
+                        break;
+                    case 'Triangle':
+                        drawTriangle(point, size * sizeMultiplier);
+                        break;
+            }
         },
-
-        drawTriangle: function (point, size) {
-            context.beginPath();
-            context.moveTo(point.x, point.y - 0.57735 * size);
-            context.lineTo(point.x + size / 2, point.y + 0.288675 * size);
-            context.lineTo(point.x - size / 2, point.y + 0.288675 * size);
-            context.closePath();
-            context.fill();
-            context.stroke();
+        
+        clear: function () {
+            context.clearRect(0,0,canvas.width,canvas.height);
         }
     };
     
@@ -36,13 +74,7 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
 .factory('dataLoader', function($http) {
     var dataLoader = {
         load: function (filename) {
-            var result = {content: null};
-            
-            $http.get(filename).success(function(data) {
-                result.content = data;
-            });
-            
-            return result;
+            return $http.get(filename);
         }
     };
     

@@ -1,10 +1,10 @@
 angular.module('storylayers.controllers', ['storylayers.services'])
     .controller('drawCtrl', ['$scope', 'drawSpace', 'dataLoader', function ($scope, drawSpace, dataLoader) {
-        drawSpace.drawCircle({x: 300, y: 300}, 80);
-        drawSpace.drawSquare({x: 200, y: 200}, 50);
-        drawSpace.drawTriangle({x: 400, y: 450}, 100);
-        
         var yes = dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/TestData.json');
+        
+        dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/styles.json').success(function(data) {
+                $scope.presets = data;
+        });
         
         $scope.slides = [{image: '../MapStoryComposer/img/styleslides/PTsimple.png', active: true},
                          {image: '../MapStoryComposer/img/styleslides/LNchoropleth.png', active: false}, 
@@ -12,5 +12,19 @@ angular.module('storylayers.controllers', ['storylayers.services'])
                          {image: '../MapStoryComposer/img/styleslides/LNsymbols.png', active: false},
                          {image: '../MapStoryComposer/img/styleslides/LNunique.png', active: false}];
         
+        $scope.updateStyle = function(property, value) {
+            console.log(property + ' : ' + value);
+            drawSpace.changeStyle(property, value);
+            drawSpace.clear();
+            drawStuff();
+        };
+        
+        function drawStuff() {
+            drawSpace.drawPoint({x: 300, y: 300}, 20);
+            drawSpace.drawPoint({x: 200, y: 200}, 30);
+            drawSpace.drawPoint({x: 400, y: 450}, 25);
+        }
+        
+        drawStuff();
         
     }]);
