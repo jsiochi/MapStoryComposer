@@ -5,6 +5,9 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
     context.fillStyle = 'Black';
     context.strokeStyle = 'red';
     
+    var symbolStyle = 'Circle';
+    var sizeMultiplier = 1;
+    
     function drawCircle(point, size) {
         context.beginPath();
         context.arc(point.x, point.y, size/2, 0, 2 * Math.PI);
@@ -38,19 +41,25 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
                     case 'Alpha':
                         context.globalAlpha = value;
                         break;
+                    case 'Symbol':
+                        symbolStyle = value;
+                        break;
+                    case 'Size':
+                        sizeMultiplier = value;
+                        break;
             }
         },
         
-        drawPoint: function (point, style, size) {
-            switch(style) {
+        drawPoint: function (point, size) {
+            switch(symbolStyle) {
                     case 'Circle':
-                        drawCircle(point, size);
+                        drawCircle(point, size * sizeMultiplier);
                         break;
                     case 'Square':
-                        drawSquare(point, size);
+                        drawSquare(point, size * sizeMultiplier);
                         break;
                     case 'Triangle':
-                        drawTriangle(point, size);
+                        drawTriangle(point, size * sizeMultiplier);
                         break;
             }
         },

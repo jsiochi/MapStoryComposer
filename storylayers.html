@@ -61,7 +61,9 @@
         														Symbol <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li ng-repeat="type in symbols"><a href="#">{{type}}</a></li>
+        														<li ng-repeat="symbol in presets.symbol.symbol" ng-click="updateStyle('Symbol',symbol)">
+                                                                    <a href="#">{{symbol}}</a>
+                                                                </li>
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="0">
@@ -69,9 +71,9 @@
         														Size <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">1</a></li>
-        														<li><a href="#">2</a></li>
-       	 														<li><a href="#">3</a></li>
+        														<li ng-repeat="size in presets.symbol.size" ng-click="updateStyle('Size',size)">
+                                                                    <a href="#">{{size}}</a>
+                                                                </li>
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="0">
@@ -89,10 +91,9 @@
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">100%</a></li>
-        														<li><a href="#">75%</a></li>
-       	 														<li><a href="#">50%</a></li>
-       	 														<li><a href="#">25%</a></li>
+        														<li ng-repeat="value in presets.symbol.alpha" ng-click="updateStyle('Alpha', value/100)">
+                                                                    <a href="#">{{value}}%</a>
+                                                                </li>
       														</ul>
     													</div>
 													</div>

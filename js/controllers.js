@@ -3,7 +3,7 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         var yes = dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/TestData.json');
         
         dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/styles.json').success(function(data) {
-                $scope.symbols = data.symbol.symbol;
+                $scope.presets = data;
         });
         
         $scope.slides = [{image: '../MapStoryComposer/img/styleslides/PTsimple.png', active: true},
@@ -20,9 +20,9 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         };
         
         function drawStuff() {
-            drawSpace.drawPoint({x: 300, y: 300}, 'Circle', 40);
-            drawSpace.drawPoint({x: 200, y: 200}, 'Square', 50);
-            drawSpace.drawPoint({x: 400, y: 450}, 'Triangle', 100);
+            drawSpace.drawPoint({x: 300, y: 300}, 20);
+            drawSpace.drawPoint({x: 200, y: 200}, 30);
+            drawSpace.drawPoint({x: 400, y: 450}, 25);
         }
         
         drawStuff();
