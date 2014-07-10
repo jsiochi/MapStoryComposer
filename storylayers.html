@@ -20,12 +20,12 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<accordion close-others="1">
-        			<accordion-group heading="StoryLayer A Title" is-open="1">
+        			<accordion-group ng-repeat="layer in layers" heading="{{layer.name}}" is-open="{{layer.open}}">
             			<!--carousel template-->
             			<div>
   							<div style="height: 200px">
     							<carousel interval="myInterval">
-      								<slide ng-repeat="slide in slides" active="slide.active">
+      								<slide ng-repeat="slide in layer.slides" active="slide.active">
       									<!--placeholder for style previews-->
         								<img ng-src="{{slide.image}}" style="margin:auto;">
         							</slide>
@@ -62,7 +62,7 @@
         														Symbol <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li ng-repeat="symbol in presets.symbol.symbol" ng-click="updateStyle('Symbol',symbol)">
+        														<li ng-repeat="symbol in presets.symbol.symbol" ng-click="updateStyle('Symbol',symbol, layer.id)">
                                                                     <a href="#">{{symbol}}</a>
                                                                 </li>
       														</ul>
@@ -72,7 +72,7 @@
         														Size <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li ng-repeat="size in presets.symbol.size" ng-click="updateStyle('Size',size)">
+        														<li ng-repeat="size in presets.symbol.size" ng-click="updateStyle('Size',size, layer.id)">
                                                                     <a href="#">{{size}}</a>
                                                                 </li>
       														</ul>
@@ -82,9 +82,9 @@
         														Color <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#" ng-click="updateStyle('Fill','Blue')">Blue</a></li>
-        														<li><a href="#" ng-click="updateStyle('Fill','Red')">Red</a></li>
-       	 														<li><a href="#" ng-click="updateStyle('Fill','Green')">Green</a></li>
+        														<li><a href="#" ng-click="updateStyle('Fill','Blue', layer.id)">Blue</a></li>
+        														<li><a href="#" ng-click="updateStyle('Fill','Red', layer.id)">Red</a></li>
+       	 														<li><a href="#" ng-click="updateStyle('Fill','Green', layer.id)">Green</a></li>
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="0">
@@ -92,7 +92,7 @@
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li ng-repeat="value in presets.symbol.alpha" ng-click="updateStyle('Alpha', value/100)">
+        														<li ng-repeat="value in presets.symbol.alpha" ng-click="updateStyle('Alpha', value/100, layer.id)">
                                                                     <a href="#">{{value}}%</a>
                                                                 </li>
       														</ul>
@@ -305,9 +305,6 @@
 								</div>
   							</div>
   						</div>
-        			</accordion-group>
-        			<accordion-group heading="StoryLayer B Title" is-open="0">
-            			Some other content.
         			</accordion-group>
     			</accordion>
 			</div>

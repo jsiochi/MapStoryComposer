@@ -2,11 +2,10 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
     var canvas = document.getElementById('layerspace');
     var context = canvas.getContext('2d');
     
-    context.fillStyle = 'Black';
-    context.strokeStyle = 'red';
+    var layerStyles = [];
     
-    var symbolStyle = 'Circle';
-    var sizeMultiplier = 1;
+    context.fillStyle = 'Blue';
+    context.strokeStyle = 'Black';
     
     function drawCircle(point, size) {
         context.beginPath();
@@ -33,33 +32,45 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
     }
     
     var drawSpace = {
-        changeStyle: function (property, value) {
+        addLayerStyle: function(numLayers) {
+            for(i = 0; i < numLayers; i++) {
+                layerStyles.push({fill: 'Blue', stroke: 'Black', size: 1, symbol: 'Circle', alpha: 1});
+            }
+        },
+        
+        changeStyle: function (property, value, layer) {
             switch(property) {
                     case 'Fill':
-                        context.fillStyle = value;
+                        layerStyles[layer].fill = value;
                         break;
                     case 'Alpha':
-                        context.globalAlpha = value;
+                        layerStyles[layer].alpha = value;
                         break;
                     case 'Symbol':
-                        symbolStyle = value;
+                        layerStyles[layer].symbol = value;
                         break;
                     case 'Size':
-                        sizeMultiplier = value;
+                        layerStyles[layer].size = value;
                         break;
             }
         },
         
-        drawPoint: function (point, size) {
-            switch(symbolStyle) {
+        drawPoint: function (point, size, layer) {
+            console.log(layer);
+            console.log(layerStyles);
+            context.fillStyle = layerStyles[layer].fill;
+            context.strokeStyle = layerStyles[layer].stroke;
+            context.globalAlpha = layerStyles[layer].alpha;
+            
+            switch(layerStyles[layer].symbol) {
                     case 'Circle':
-                        drawCircle(point, size * sizeMultiplier);
+                        drawCircle(point, size * layerStyles[layer].size);
                         break;
                     case 'Square':
-                        drawSquare(point, size * sizeMultiplier);
+                        drawSquare(point, size * layerStyles[layer].size);
                         break;
                     case 'Triangle':
-                        drawTriangle(point, size * sizeMultiplier);
+                        drawTriangle(point, size * layerStyles[layer].size);
                         break;
             }
         },

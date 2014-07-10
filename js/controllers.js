@@ -6,8 +6,10 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         var layerGeom = ['Point','Line','Poly'];
         
         dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/TestData.json').success(function(data) {
+//            $scope.layers = data.layers;
             points = data.geodata.data;
-            console.log(points);
+            $scope.layers = [{id: 0, name: 'StoryLayer 1', open: true, slides: allSlides[0], points: points},{id: 1, name: 'StoryLayer 2', open: false, slides:                                 allSlides[0], points: points}];
+            drawSpace.addLayerStyle($scope.layers.length);
             drawPoints();
         });
         
@@ -16,7 +18,7 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         });
         
         var PTslides = [{image: '../MapStoryComposer/img/styleslides/PTsimple.png', active: true},
-                         {image: '../MapStoryComposer/img/styleslides/PTchoropleth.png', active: true},
+                         {image: '../MapStoryComposer/img/styleslides/PTchoropleth.png', active: false},
                          {image: '../MapStoryComposer/img/styleslides/PTunique.png', active: false},
                          {image: '../MapStoryComposer/img/styleslides/PTgraduated.png', active: false},
                          {image: '../MapStoryComposer/img/styleslides/PTdensity.png', active: false}];
@@ -33,19 +35,17 @@ angular.module('storylayers.controllers', ['storylayers.services'])
                         {image: '../MapStoryComposer/img/styleslides/PGgraduated.png', active: false}];
         
         var allSlides = [PTslides, LNslides, PGslides];
-        
-        $scope.slides = allSlides[1];
                          
         
-        $scope.updateStyle = function(property, value) {
+        $scope.updateStyle = function(property, value, layer) {
             console.log(property + ' : ' + value);
-            drawSpace.changeStyle(property, value);
+            drawSpace.changeStyle(property, value, layer);
             drawSpace.clear();
             drawPoints();
         };
         
         $scope.showPanel = function(panelName) {
-            var layer = 1;
+            var layer = 0;
             
             switch(panelName) {
                     case 'Symbol':
@@ -56,9 +56,10 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         };
         
         function drawPoints() {
-            for(i = 0; i < points.length; i++) {
-                drawSpace.drawPoint({x: points[i].lat, y: points[i].long}, points[i].value);
-                console.log(points[i]);
+            for(i = 0; i < $scope.layers.length; i++) {
+                for(j = 0; j < $scope.layers[i].points.length; j++) {
+                    drawSpace.drawPoint({x: $scope.layers[i].points[j].lat, y: $scope.layers[i].points[j].long}, $scope.layers[i].points[j].value, i);
+                }
             }
         }
     }]);
