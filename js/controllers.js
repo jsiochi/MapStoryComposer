@@ -5,11 +5,27 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         
         var layerGeom = ['Point','Line','Poly'];
         
+        var testLines = [
+        		[[100, 100], [200, 200], [100, 400]], 
+        		[[400, 400], [300, 300], [400, 200], [300, 100]]
+    		];
+        
+        var testPoly = [
+        		[
+            		[[300, 200], [450, 400], [100, 400], [300, 200]]
+        		], 
+        		[
+            		[[150, 50], [400, 100], [100, 200], [50, 100], [150, 50]]
+        		]
+    		];
+        
         dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/TestData.json').success(function(data) {
 //            $scope.layers = data.layers;
             points = data.geodata.data;
             $scope.layers = [{id: 0, name: 'StoryLayer 1', open: true, slides: allSlides[0], points: points},{id: 1, name: 'StoryLayer 2', open: false, slides:                                 allSlides[0], points: points}];
             drawSpace.addLayerStyle($scope.layers.length);
+            //drawSpace.drawMultiLine(testLines, 0);
+            //drawSpace.drawMultiPolygon(testPoly, 1);
             drawPoints();
         });
         
@@ -18,10 +34,10 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         });
         
         var PTslides = [{image: '../MapStoryComposer/img/styleslides/PTsimple.png', active: true},
-                         {image: '../MapStoryComposer/img/styleslides/PTchoropleth.png', active: false},
-                         {image: '../MapStoryComposer/img/styleslides/PTunique.png', active: false},
-                         {image: '../MapStoryComposer/img/styleslides/PTgraduated.png', active: false},
-                         {image: '../MapStoryComposer/img/styleslides/PTdensity.png', active: false}];
+                        {image: '../MapStoryComposer/img/styleslides/PTchoropleth.png', active: false},
+                        {image: '../MapStoryComposer/img/styleslides/PTunique.png', active: false},
+                        {image: '../MapStoryComposer/img/styleslides/PTgraduated.png', active: false},
+                        {image: '../MapStoryComposer/img/styleslides/PTdensity.png', active: false}];
                         
         var LNslides = [{image: '../MapStoryComposer/img/styleslides/LNsimple.png', active: true},
                         {image: '../MapStoryComposer/img/styleslides/LNchoropleth.png', active: false}, 

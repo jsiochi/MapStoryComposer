@@ -31,6 +31,12 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
         context.stroke();
     }
     
+    function changeStyle(layer) {
+        context.fillStyle = layerStyles[layer].fill;
+        context.strokeStyle = layerStyles[layer].stroke;
+        context.globalAlpha = layerStyles[layer].alpha;
+    }
+    
     var drawSpace = {
         addLayerStyle: function(numLayers) {
             for(i = 0; i < numLayers; i++) {
@@ -56,11 +62,7 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
         },
         
         drawPoint: function (point, size, layer) {
-            console.log(layer);
-            console.log(layerStyles);
-            context.fillStyle = layerStyles[layer].fill;
-            context.strokeStyle = layerStyles[layer].stroke;
-            context.globalAlpha = layerStyles[layer].alpha;
+            changeStyle(layer);
             
             switch(layerStyles[layer].symbol) {
                     case 'Circle':
@@ -72,6 +74,32 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
                     case 'Triangle':
                         drawTriangle(point, size * layerStyles[layer].size);
                         break;
+            }
+        },
+        
+        drawMultiPolygon: function(coordinates, layer) {
+            changeStyle(layer);
+            for(i = 0; i < coordinates.length; i++) {
+                context.beginPath();
+                context.moveTo(coordinates[i][0][0][0], coordinates[i][0][0][1]);
+                for(j = 1; j < coordinates[i][0].length; j++) {
+                    context.lineTo(coordinates[i][0][j][0], coordinates[i][0][j][1]);
+                }
+                context.closePath();
+                context.fill();
+                context.stroke();
+            }
+        },
+        
+        drawMultiLine: function(coordinates, layer) {
+            changeStyle(layer);
+            for(i = 0; i < coordinates.length; i++) {
+                context.beginPath();
+                context.moveTo(coordinates[i][0][0], coordinates[i][0][1]);
+                for(j = 1; j < coordinates[i].length; j++) {
+                    context.lineTo(coordinates[i][j][0], coordinates[i][j][1]);
+                }
+                context.stroke();
             }
         },
         
