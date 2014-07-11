@@ -61,29 +61,34 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
             }
         },
         
-        drawPoint: function (point, size, layer) {
+        drawMultiPoint: function (coordinates, size, layer) {
             changeStyle(layer);
             
-            switch(layerStyles[layer].symbol) {
-                    case 'Circle':
-                        drawCircle(point, size * layerStyles[layer].size);
-                        break;
-                    case 'Square':
-                        drawSquare(point, size * layerStyles[layer].size);
-                        break;
-                    case 'Triangle':
-                        drawTriangle(point, size * layerStyles[layer].size);
-                        break;
+            for(i = 0; i < coordinates.length; i++) {
+                switch(layerStyles[layer].symbol) {
+                        case 'Circle':
+                            drawCircle({x: coordinates[i][0], y: coordinates[i][1]}, 30 * layerStyles[layer].size);
+                            break;
+                        case 'Square':
+                            drawSquare({x: coordinates[i][0], y: coordinates[i][1]}, 30 * layerStyles[layer].size);
+                            break;
+                        case 'Triangle':
+                            drawTriangle({x: coordinates[i][0], y: coordinates[i][1]}, 30 * layerStyles[layer].size);
+                            break;
+                }
             }
         },
         
         drawMultiPolygon: function(coordinates, layer) {
             changeStyle(layer);
+            
+            var scale = 10;
+            
             for(i = 0; i < coordinates.length; i++) {
                 context.beginPath();
-                context.moveTo(coordinates[i][0][0][0], coordinates[i][0][0][1]);
+                context.moveTo(coordinates[i][0][0][0] * scale, coordinates[i][0][0][1] * scale);
                 for(j = 1; j < coordinates[i][0].length; j++) {
-                    context.lineTo(coordinates[i][0][j][0], coordinates[i][0][j][1]);
+                    context.lineTo(coordinates[i][0][j][0] * scale, coordinates[i][0][j][1] * scale);
                 }
                 context.closePath();
                 context.fill();
@@ -93,11 +98,14 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
         
         drawMultiLine: function(coordinates, layer) {
             changeStyle(layer);
+            
+            var scale = 10;
+            
             for(i = 0; i < coordinates.length; i++) {
                 context.beginPath();
-                context.moveTo(coordinates[i][0][0], coordinates[i][0][1]);
+                context.moveTo(coordinates[i][0][0] * scale, coordinates[i][0][1] * scale);
                 for(j = 1; j < coordinates[i].length; j++) {
-                    context.lineTo(coordinates[i][j][0], coordinates[i][j][1]);
+                    context.lineTo(coordinates[i][j][0] * scale, coordinates[i][j][1] * scale);
                 }
                 context.stroke();
             }

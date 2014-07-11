@@ -20,13 +20,9 @@ angular.module('storylayers.controllers', ['storylayers.services'])
     		];
         
         dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/TestData.json').success(function(data) {
-//            $scope.layers = data.layers;
-            points = data.geodata.data;
-            $scope.layers = [{id: 0, name: 'StoryLayer 1', open: true, slides: allSlides[0], points: points},{id: 1, name: 'StoryLayer 2', open: false, slides:                                 allSlides[0], points: points}];
-            drawSpace.addLayerStyle($scope.layers.length);
-            //drawSpace.drawMultiLine(testLines, 0);
-            //drawSpace.drawMultiPolygon(testPoly, 1);
-            drawPoints();
+            $scope.layers = data.layers;
+            processLayers();
+            drawLayers();
         });
         
         dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/styles.json').success(function(data) {
@@ -50,14 +46,14 @@ angular.module('storylayers.controllers', ['storylayers.services'])
                         {image: '../MapStoryComposer/img/styleslides/PGunique.png', active: false},
                         {image: '../MapStoryComposer/img/styleslides/PGgraduated.png', active: false}];
         
-        var allSlides = [PTslides, LNslides, PGslides];
+        var allSlides = {'MultiPoint': PTslides, 'MultiLineString': LNslides, 'MultiPolygon': PGslides};
                          
         
         $scope.updateStyle = function(property, value, layer) {
             console.log(property + ' : ' + value);
             drawSpace.changeStyle(property, value, layer);
             drawSpace.clear();
-            drawPoints();
+            drawLayers();
         };
         
         $scope.showPanel = function(panelName) {
@@ -71,11 +67,34 @@ angular.module('storylayers.controllers', ['storylayers.services'])
             }
         };
         
-        function drawPoints() {
+        function drawLayers() {
+            var i = 0;
+            
             for(i = 0; i < $scope.layers.length; i++) {
-                for(j = 0; j < $scope.layers[i].points.length; j++) {
-                    drawSpace.drawPoint({x: $scope.layers[i].points[j].lat, y: $scope.layers[i].points[j].long}, $scope.layers[i].points[j].value, i);
+                switch($scope.layers[i].geometry.type) {
+                        case 'MultiPoint':
+                            drawSpace.drawMultiPoint($scope.layers[i].geometry.coordinates, 1, i);
+                            break;
+                        case 'MultiLineString':
+                            drawSpace.drawMultiLine($scope.layers[i].geometry.coordinates, i);
+                            console.log('DrawingLines')
+                            break;
+                        case 'MultiPolygon':
+                            drawSpace.drawMultiPolygon($scope.layers[i].geometry.coordinates, i);
+                            console.log('DrawingPolygons')
+                            break;
                 }
             }
+        }
+        
+        function processLayers() {
+            var i = 0;
+            
+            for(i = 0; i < $scope.layers.length; i++) {
+                $scope.layers[i].id = i;
+                $scope.layers[i].slides = allSlides[$scope.layers[i].geometry.type];
+                $scope.layers[i].open = (i === 0);
+            }
+            drawSpace.addLayerStyle($scope.layers.length);
         }
     }]);
