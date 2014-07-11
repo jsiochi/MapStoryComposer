@@ -92,7 +92,7 @@ angular.module('storylayers.controllers', ['storylayers.services'])
             
             for(i = 0; i < $scope.layers.length; i++) {
                 $scope.layers[i].id = i;
-                $scope.layers[i].slides = allSlides[$scope.layers[i].geometry.type];
+                $scope.layers[i].slides = JSON.parse(JSON.stringify(allSlides[$scope.layers[i].geometry.type].slice(0)));
                 $scope.layers[i].open = (i === 0);
             }
             drawSpace.addLayerStyle($scope.layers.length);
