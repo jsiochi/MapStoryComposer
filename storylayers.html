@@ -103,7 +103,6 @@
         														Color <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-                                                                <div range-slider min="0" max="100" model-min="min1" model-max="max1" orientation="vertical"></div>
         														<li><a href="#" ng-click="updateStyle('Fill','Blue', layer.id)">Blue</a></li>
         														<li><a href="#" ng-click="updateStyle('Fill','Red', layer.id)">Red</a></li>
        	 														<li><a href="#" ng-click="updateStyle('Fill','Green', layer.id)">Green</a></li>
@@ -154,10 +153,7 @@
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">100%</a></li>
-        														<li><a href="#">75%</a></li>
-       	 														<li><a href="#">50%</a></li>
-       	 														<li><a href="#">25%</a></li>
+        														<div range-slider min="0" max="100" model-max="max1" pin-handle="min" style="width: 200px;"></div>
       														</ul>
     													</div>
 													</div>
