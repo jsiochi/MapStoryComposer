@@ -6,6 +6,7 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
     
     context.fillStyle = 'Blue';
     context.strokeStyle = 'Black';
+    context.setLineDash([5]);
     
     function drawCircle(point, size) {
         context.beginPath();
@@ -126,4 +127,44 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
     };
     
     return dataLoader;
+})
+.factory('SLDgenerator', function() {
+    /*
+        process for generating SLDs from style objects:
+        1. define a filter (optional?)
+        2. define a rule - in the 'symbolizer' part, this is the where the style properties actually go
+        3. define a style based on the previous rule/rules
+        4. write the style with namedLayers --> name and userStyles. userStyles gets the array of previously defined styles
+    */
+    
+    var SLDgenerator = {
+        objToSLD: function() {
+            var symbolHash = {'Polygon' : {
+                fillColor: '#0000ff',
+                strokeWidth: '5',
+                strokeColor: '#ff0000'
+            }};
+            
+            var rule = new OpenLayers.Rule({
+                symbolizer: symbolHash
+            });
+            
+            var s = new OpenLayers.Style("CoolStyle", {
+                rules: [rule]
+            });
+            
+            var format = new OpenLayers.Format.SLD();
+            
+            format.stringifyOutput = false;
+            
+            return format.write({
+                namedLayers: [{
+                    name: 'CoolLayer',
+                    userStyles: [s]
+                }]
+            });
+        }
+    };
+    
+    return SLDgenerator;
 });

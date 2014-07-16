@@ -1,9 +1,7 @@
 angular.module('storylayers.controllers', ['storylayers.services'])
-    .controller('drawCtrl', ['$scope', 'drawSpace', 'dataLoader', function ($scope, drawSpace, dataLoader) {
+    .controller('drawCtrl', ['$scope', 'drawSpace', 'dataLoader', 'SLDgenerator', function ($scope, drawSpace, dataLoader, SLDgenerator) {
         
         var points = [];
-        
-        var layerGeom = ['Point','Line','Poly'];
         
         var testLines = [
         		[[100, 100], [200, 200], [100, 400]], 
@@ -26,8 +24,13 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         });
         
         dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/styles.json').success(function(data) {
-                $scope.presets = data;
+            $scope.presets = data;
         });
+        
+        $scope.min1 = 20;
+        $scope.max1 = 80;
+        
+        console.log(SLDgenerator.objToSLD());
         
         var PTslides = [{image: '../MapStoryComposer/img/styleslides/PTsimple.png', active: true},
                         {image: '../MapStoryComposer/img/styleslides/PTchoropleth.png', active: false},
@@ -56,14 +59,13 @@ angular.module('storylayers.controllers', ['storylayers.services'])
             drawLayers();
         };
         
-        $scope.showPanel = function(panelName) {
-            var layer = 0;
-            
+        $scope.showPanel = function(panelName, layerGeom) {
+            console.log(layerGeom);
             switch(panelName) {
-                    case 'Symbol':
-                        return layerGeom[layer] === 'Point';
-                    case 'Fill':
-                        return layerGeom[layer] === 'Poly';
+                case 'Symbol':
+                    return layerGeom === 'MultiPoint';
+                case 'Fill':
+                    return layerGeom === 'MultiPolygon';
             }
         };
         
