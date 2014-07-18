@@ -4,6 +4,7 @@
 <head>
     <title>MapStory 7</title>
     
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="bower_components/angular-rangeslider/angular.rangeSlider.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
@@ -24,17 +25,6 @@
     <script src="js/app.js"></script>
     <script src="js/services.js"></script>
     <script src="js/controllers.js"></script>
-<<<<<<< HEAD
-    <script src="js/ui-bootstrap-tpls-0.9.0.min.js"></script>
-    <script src="js/angular-slider.js"></script>
-    
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
-    <link href="css/angular-slider.css" rel="stylesheet">
-=======
-    
-    
->>>>>>> FETCH_HEAD
 </head>
 
 <body ng-controller="drawCtrl"></body>
@@ -60,38 +50,16 @@
     									<!--placeholder for style options like buttons etc-->
           								<div id="symboltmpl" class="styletmpl" ng-show="showPanel('Symbol', layer.geometry.type)">
           									<!--template-->
-          									<div class="tmpl-header">Symbology panel</div>
+          									<div class="tmpl-header">Symbology</div>
           									<form class="tmpl-content">
           										<div class="form-group">
                                                     
 													<div class="btn-toolbar">
-<<<<<<< HEAD
-=======
-<!--
-                                                        <div class="dropdown">
-                                                            <a class="btn btn-default" data-toggle="dropdown" href="#">Symbol<b class="caret"></b></a>
-                                                            <ul class="dropdown-menu" role="menu">
-                                                                <li>
-                                                                    <a>Circle</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a>Triangle</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a>Square</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
--->
-                                                        
->>>>>>> FETCH_HEAD
 														<div class="btn-group" dropdown is-open="false">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Symbol <span class="caret"></span>
       														</button>
-                                                            
-                                                            
-      														<ul class="dropdown-menu" role="menu">
+                                                            <ul class="dropdown-menu" role="menu">
         														<li ng-repeat="symbol in presets.symbol.symbol" ng-click="updateStyle('Symbol',symbol, layer.id)">
                                                                     <a href="#">{{symbol}}</a>
                                                                 </li>
@@ -100,7 +68,7 @@
                                                         
                                                         
     													<div class="btn-group" dropdown is-open="0">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Size <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -111,7 +79,7 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="0">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Color <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -121,13 +89,11 @@
       														</ul>
       													</div>
     													<div class="btn-group" dropdown is-open="0">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li ng-repeat="value in presets.symbol.alpha" ng-click="updateStyle('Alpha', value/100, layer.id)">
-                                                                    <a href="#">{{value}}%</a>
-                                                                </li>
+      															<div range-slider min="0" max="100" model-max="max1" pin-handle="min" orientation="vertical"></div>
       														</ul>
     													</div>
     												</div>
@@ -136,12 +102,12 @@
           								</div>
           								<div id="filltmpl" class="styletmpl" ng-show="showPanel('Fill',layer.geometry.type)">
           									<!--template-->
-          									<div class="tmpl-header">Fill panel</div>
+          									<div class="tmpl-header">Fill</div>
           									<form class="tmpl-content">
           										<div class="form-group">
 													<div class="btn-toolbar">
 														<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Fill <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -151,7 +117,7 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Color <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -161,11 +127,11 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<div range-slider min="0" max="100" model-max="max1" pin-handle="min" style="width: 200px;"></div>
+        														<div range-slider min="0" max="100" model-max="max1" pin-handle="min" orientation="vertical"></div>
       														</ul>
     													</div>
 													</div>
@@ -174,12 +140,12 @@
           								</div>
           								<div id="stroketmpl" class="styletmpl">
           									<!--template-->
-          									<div class="tmpl-header">Strokes panel</div>
+          									<div class="tmpl-header">Stroke</div>
           									<form class="tmpl-content">
           										<div class="form-group">
 													<div class="btn-toolbar">
 														<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Stroke <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -189,7 +155,7 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Weight <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -199,7 +165,7 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Color <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -209,14 +175,11 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">100%</a></li>
-        														<li><a href="#">75%</a></li>
-       	 														<li><a href="#">50%</a></li>
-       	 														<li><a href="#">25%</a></li>
+      															<div range-slider min="0" max="100" model-max="max1" pin-handle="min" orientation="vertical"></div>
       														</ul>
     													</div>
 													</div>
@@ -225,12 +188,12 @@
           								</div>
           								<div id="classtmpl" class="styletmpl">
           									<!--template-->
-          									<div class="tmpl-header">Classification panel</div>
+          									<div class="tmpl-header">Classification</div>
           									<form class="tmpl-content">
           										<div class="form-group">
 													<div class="btn-toolbar">
 														<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Source <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -240,7 +203,7 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Scheme <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -249,12 +212,12 @@
       														</ul>
     													</div>
     													<div class="btn-group">
-       				 										<label class="btn btn-primary" ng-model="radioModel" btn-radio="'Left'">Left</label>
-        													<label class="btn btn-primary" ng-model="radioModel" btn-radio="'Middle'">Middle</label>
-        													<label class="btn btn-primary" ng-model="radioModel" btn-radio="'Right'">Right</label>
+       				 										<label class="btn btn-sm btn-primary" ng-model="radioModel" btn-radio="'Left'">Left</label>
+        													<label class="btn btn-sm btn-primary" ng-model="radioModel" btn-radio="'Middle'">Middle</label>
+        													<label class="btn btn-sm btn-primary" ng-model="radioModel" btn-radio="'Right'">Right</label>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Type <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -269,12 +232,12 @@
           								</div>
           								<div id="labeltmpl" class="styletmpl">
           									<!--template-->
-          									<div class="tmpl-header">Label panel</div>
+          									<div class="tmpl-header">Label</div>
           									<form class="tmpl-content">
           										<div class="form-group">
 													<div class="btn-toolbar">
 														<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Source <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -283,7 +246,7 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Size <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -293,7 +256,7 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Font <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -302,7 +265,7 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+      														<button type="button" class="btn btn-sm btn-primary dropdown-toggle" ng-disabled="disabled">
         														Color <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -312,11 +275,11 @@
       														</ul>
     													</div>
     													<div class="btn-group">
-        													<label class="btn btn-primary" ng-model="checkModel.bold" btn-checkbox><strong>B</strong></label>
-        													<label class="btn btn-primary" ng-model="checkModel.underline" btn-checkbox><u>U</u></label>
-        													<label class="btn btn-primary" ng-model="checkModel.italic" btn-checkbox><i>I</i></label>
-        													<label class="btn btn-primary" ng-model="checkModel.halo" btn-checkbox>H</label>
-        													<label class="btn btn-primary" ng-model="checkModel.shadow" btn-checkbox>S</label>
+        													<label class="btn btn-sm btn-primary" ng-model="checkModel.bold" btn-checkbox><strong>B</strong></label>
+        													<label class="btn btn-sm btn-primary" ng-model="checkModel.underline" btn-checkbox><u>U</u></label>
+        													<label class="btn btn-sm btn-primary" ng-model="checkModel.italic" btn-checkbox><i>I</i></label>
+        													<label class="btn btn-sm btn-primary" ng-model="checkModel.halo" btn-checkbox>H</label>
+        													<label class="btn btn-sm btn-primary" ng-model="checkModel.shadow" btn-checkbox>S</label>
     													</div>
 													</div>
 												</div>

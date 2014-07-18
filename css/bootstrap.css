@@ -376,7 +376,7 @@ cite {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small,
@@ -2493,7 +2493,7 @@ input[type="button"].btn-block {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 40px;
+  min-width: 70px;
   padding: 5px 0;
   margin: 2px 0 0;
   list-style: none;
