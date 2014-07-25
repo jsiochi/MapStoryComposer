@@ -1,37 +1,20 @@
 angular.module('storylayers.controllers', ['storylayers.services'])
-    .controller('drawCtrl', ['$scope', 'drawSpace', 'dataLoader', 'SLDgenerator', function ($scope, drawSpace, dataLoader, SLDgenerator) {
+    .controller('drawCtrl', ['$scope', 'drawSpace', 'dataLoader', 'SLDgenerator','styleModel', function ($scope, drawSpace, dataLoader, SLDgenerator, styleModel) {
         
-        var points = [];
-        
-        var testLines = [
-        		[[100, 100], [200, 200], [100, 400]], 
-        		[[400, 400], [300, 300], [400, 200], [300, 100]]
-    		];
-        
-        var testPoly = [
-        		[
-            		[[300, 200], [450, 400], [100, 400], [300, 200]]
-        		], 
-        		[
-            		[[150, 50], [400, 100], [100, 200], [50, 100], [150, 50]]
-        		]
-    		];
+        var mockup = false;
         
         dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/TestData.json').success(function(data) {
             $scope.layers = data.layers;
             processLayers();
             drawLayers();
+            styleModel.addLayers($scope.layers);
         });
         
         dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/styles.json').success(function(data) {
             $scope.presets = data;
         });
         
-        $scope.min1 = 20;
-        $scope.max1 = 80;
         $scope.testColor = '#00ff00';
-        
-        console.log(SLDgenerator.objToSLD());
         
         var PTslides = [{image: '../MapStoryComposer/img/styleslides/PTsimple.png', active: true},
                         {image: '../MapStoryComposer/img/styleslides/PTchoropleth.png', active: false},
@@ -57,6 +40,7 @@ angular.module('storylayers.controllers', ['storylayers.services'])
             console.log(property + ' : ' + value);
             drawSpace.changeStyle(property, value, layer);
             drawSpace.clear();
+            styleModel.updateStyle(property,value,layer);
             drawLayers();
         };
         
@@ -71,6 +55,8 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         };
         
         function drawLayers() {
+            if(!mockup) {return;}
+            
             var i = 0;
             
             for(i = 0; i < $scope.layers.length; i++) {
@@ -97,6 +83,7 @@ angular.module('storylayers.controllers', ['storylayers.services'])
                 $scope.layers[i].id = i;
                 $scope.layers[i].slides = JSON.parse(JSON.stringify(allSlides[$scope.layers[i].geometry.type].slice(0)));
                 $scope.layers[i].open = (i === 0);
+                $scope.layers[i].max = 100;
             }
             drawSpace.addLayerStyle($scope.layers.length);
         }

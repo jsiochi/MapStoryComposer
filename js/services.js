@@ -167,4 +167,46 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
     };
     
     return SLDgenerator;
+})
+.factory('styleModel', function() {
+    var layerStyles = [];
+    
+    function addLayerStyle(layerName, geomType) {
+        layerStyles.push({name: layerName, geom: geomType, style: {
+                graphicName: 'circle', 
+                pointRadius: '6', 
+                fillColor: '#ee9900', 
+                fillOpacity: '0.4', 
+                strokeDashstyle: 'solid',
+                strokeWidth: '1',
+                strokeColor: '#ee9900',
+                strokeOpacity: '1',
+                label: null,
+                fontFamily: null,
+                fontSize: '12',
+                fontStyle: 'bold',
+                fontColor: 'black',
+                fontWeight: '200',
+                fontOpacity: '1'
+            }, classify: {}
+        });
+    }
+    
+    var styleModel = {
+        addLayers: function(layers) {
+            var i = 0;
+            
+            for(i = 0; i < layers.length; i++) {
+                addLayerStyle(layers[i].name, layers[i].geometry.type);
+            }
+        },
+        
+        updateStyle: function(property, value, layer) {
+            layerStyles[layer].style[property] = value + '';
+            console.log(layerStyles[0]);
+            console.log(layerStyles[1]);
+        }
+    };
+    
+    return styleModel;
 });

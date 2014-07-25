@@ -64,7 +64,7 @@
         														Symbol <span class="caret"></span>
       														</button>
                                                             <ul class="dropdown-menu" role="menu">
-        														<li ng-repeat="symbol in presets.symbol.symbol" ng-click="updateStyle('Symbol',symbol, layer.id)">
+        														<li ng-repeat="symbol in presets.symbol.symbol" ng-click="updateStyle('graphicName',symbol, layer.id)">
                                                                     <a href="#">{{symbol}}</a>
                                                                 </li>
       														</ul>
@@ -97,7 +97,7 @@
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-      															<div range-slider min="0" max="100" model-max="max1" pin-handle="min" orientation="vertical"></div>
+      															<div range-slider min="0" max="100" model-max="layer.max" pin-handle="min" orientation="vertical" ng-click="updateStyle('fillOpacity',layer.max/100, layer.id)"></div>
       														</ul>
     													</div>
     												</div>
