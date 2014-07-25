@@ -29,6 +29,7 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         
         $scope.min1 = 20;
         $scope.max1 = 80;
+        $scope.testColor = '#00ff00';
         
         console.log(SLDgenerator.objToSLD());
         
