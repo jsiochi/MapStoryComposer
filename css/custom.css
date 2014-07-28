@@ -1,13 +1,12 @@
 .styletmpl {
 	padding: 5px;
-	border: 1px solid gainsboro;
 	margin: 5px 0;
+	background-color: whitesmoke;
 }
 
 .tmpl-header {
 	font-size: 1.1em;
 	color: darkgray;
-	border-bottom: 1px solid gainsboro;
 }
 
 .tmpl-content {

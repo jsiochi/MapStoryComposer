@@ -3841,8 +3841,7 @@ a.list-group-item {
 
 .panel-group .panel {
   margin-bottom: 0;
-  border-radius: 4px;
-  overflow: hidden; }
+  border-radius: 0px;}
   .panel-group .panel + .panel {
     margin-top: 1px; }
 .panel-group .panel-heading {
@@ -4171,14 +4170,12 @@ body.modal-open {
   max-width: 276px;
   padding: 1px;
   text-align: left;
-  background-color: white;
+  color: white;
+  font-size: 0.9em;
+  background-color: darkgray;
   background-clip: padding-box;
-  border: 1px solid #cccccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  white-space: normal; }
+  border-radius: 4px;
+  white-space: nowrap; }
   .popover.top {
     margin-top: -10px; }
   .popover.right {
@@ -4199,7 +4196,7 @@ body.modal-open {
   border-radius: 5px 5px 0 0; }
 
 .popover-content {
-  padding: 9px 14px; }
+  padding: 5px 10px; }
 
 .popover .arrow, .popover .arrow:after {
   position: absolute;
@@ -4228,7 +4225,7 @@ body.modal-open {
     bottom: 1px;
     margin-left: -10px;
     border-bottom-width: 0;
-    border-top-color: white; }
+    border-top-color: darkgray; }
 .popover.right .arrow {
   top: 50%;
   left: -11px;
