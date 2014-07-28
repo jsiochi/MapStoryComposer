@@ -262,7 +262,6 @@ body {
   color: #333333;
   background-color: white; }
 
-input,
 button,
 select,
 textarea {
@@ -270,8 +269,23 @@ textarea {
   font-size: inherit;
   line-height: inherit; }
 
+input {
+	color: black;
+	background-color: gainsboro;
+	border-radius:4px;
+	border:1px solid gainsboro;
+	input:hover, input:focus {
+		
+	}
+	
+}
+
+
+
+
+
+
 button,
-input,
 select[multiple],
 textarea {
   background-image: none; }
@@ -4238,7 +4252,7 @@ body.modal-open {
     left: 1px;
     bottom: -10px;
     border-left-width: 0;
-    border-right-color: white; }
+    border-right-color: darkgray; }
 .popover.bottom .arrow {
   left: 50%;
   margin-left: -11px;
@@ -4251,7 +4265,7 @@ body.modal-open {
     top: 1px;
     margin-left: -10px;
     border-top-width: 0;
-    border-bottom-color: white; }
+    border-bottom-color: darkgray; }
 .popover.left .arrow {
   top: 50%;
   right: -11px;
@@ -4263,7 +4277,7 @@ body.modal-open {
     content: " ";
     right: 1px;
     border-right-width: 0;
-    border-left-color: white;
+    border-left-color: darkgray;
     bottom: -10px; }
 
 .carousel {
