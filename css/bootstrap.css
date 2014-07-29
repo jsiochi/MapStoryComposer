@@ -262,7 +262,6 @@ body {
   color: #333333;
   background-color: white; }
 
-input,
 button,
 select,
 textarea {
@@ -270,8 +269,23 @@ textarea {
   font-size: inherit;
   line-height: inherit; }
 
+input {
+	color: black;
+	background-color: gainsboro;
+	border-radius:4px;
+	border:1px solid gainsboro;
+	input:hover, input:focus {
+		
+	}
+	
+}
+
+
+
+
+
+
 button,
-input,
 select[multiple],
 textarea {
   background-image: none; }
@@ -4171,14 +4185,12 @@ body.modal-open {
   max-width: 276px;
   padding: 1px;
   text-align: left;
-  background-color: white;
+  color: white;
+  font-size: 0.9em;
+  background-color: darkgray;
   background-clip: padding-box;
-  border: 1px solid #cccccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  white-space: normal; }
+  border-radius: 4px;
+  white-space: nowrap; }
   .popover.top {
     margin-top: -10px; }
   .popover.right {
@@ -4199,7 +4211,7 @@ body.modal-open {
   border-radius: 5px 5px 0 0; }
 
 .popover-content {
-  padding: 9px 14px; }
+  padding: 5px 10px; }
 
 .popover .arrow, .popover .arrow:after {
   position: absolute;
@@ -4228,7 +4240,7 @@ body.modal-open {
     bottom: 1px;
     margin-left: -10px;
     border-bottom-width: 0;
-    border-top-color: white; }
+    border-top-color: darkgray; }
 .popover.right .arrow {
   top: 50%;
   left: -11px;
@@ -4241,7 +4253,7 @@ body.modal-open {
     left: 1px;
     bottom: -10px;
     border-left-width: 0;
-    border-right-color: white; }
+    border-right-color: darkgray; }
 .popover.bottom .arrow {
   left: 50%;
   margin-left: -11px;
@@ -4254,7 +4266,7 @@ body.modal-open {
     top: 1px;
     margin-left: -10px;
     border-top-width: 0;
-    border-bottom-color: white; }
+    border-bottom-color: darkgray; }
 .popover.left .arrow {
   top: 50%;
   right: -11px;
@@ -4266,7 +4278,7 @@ body.modal-open {
     content: " ";
     right: 1px;
     border-right-width: 0;
-    border-left-color: white;
+    border-left-color: darkgray;
     bottom: -10px; }
 
 .carousel {

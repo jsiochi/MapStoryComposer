@@ -11,6 +11,9 @@
     <link href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     
+	<!-- icon fonts -->
+	<link type="text/css" rel="stylesheet" href="font-icons/custom-icons/custom-icons.css">
+    
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
     <script src="bower_components/angular/angular.min.js"></script>
@@ -54,7 +57,7 @@
     									<!--placeholder for style options like buttons etc-->
           								<div id="symboltmpl" class="styletmpl" ng-show="showPanel('Symbol', layer.geometry.type)">
           									<!--template-->
-          									<div class="tmpl-header">Symbology</div>
+          									<div class="tmpl-header">Symbol</div>
           									<form class="tmpl-content">
           										<div class="form-group">
                                                    <div class="btn-toolbar">
@@ -68,31 +71,43 @@
                                                                 </li>
       														</ul>
     													</div>
-                                                        
-                                                        
     													<div class="btn-group" dropdown is-open="0">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Symbol size" popover-trigger="mouseenter">
-        														Size <span class="caret"></span>
-      														</button>
-      														<ul class="dropdown-menu" role="menu">
-        														<li ng-repeat="size in presets.symbol.size" ng-click="updateStyle('Size',size, layer.id)">
-                                                                    
-                                                                    <a href="#">{{size}}</a>
-                                                                </li>
-      														</ul>
+      														<span popover-placement="top" popover="Symbol size" popover-trigger="mouseenter">
+        														<input type="number" min="0" max="30" step="1" value="10" name="some-name"/>
+      														</span>
     													</div>
     													<div class="btn-group" dropdown is-open="0">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Symbol color" popover-trigger="mouseenter">
         														Color <span class="caret"></span>
       														</button>
-      														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#" ng-click="updateStyle('Fill','Blue', layer.id)">Blue</a></li>
+      														<ul class="dropdown-menu color-select" role="menu" style="padding:5px;width:150px">
+        														<!--<li><a href="#" ng-click="updateStyle('Fill','Blue', layer.id)">Blue</a></li>
         														<li><a href="#" ng-click="updateStyle('Fill','Red', layer.id)">Red</a></li>
-       	 														<li><a href="#" ng-click="updateStyle('Fill','Green', layer.id)">Green</a></li>
-      														</ul>
+       	 														<li><a href="#" ng-click="updateStyle('Fill','Green', layer.id)">Green</a></li>-->
+       	 														<li><span style="background-color:indianred" popover-placement="bottom" popover="Red" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:skyblue" popover-placement="bottom" popover="Sky" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:yellowgreen" popover-placement="bottom" popover="Lime" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:gold" popover-placement="bottom" popover="Gold" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:plum" popover-placement="bottom" popover="Lilac" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:salmon" popover-placement="bottom" popover="Salmon" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:cornflowerblue" popover-placement="bottom" popover="Cornflower" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:darkgray" popover-placement="bottom" popover="Steel" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:lightgreen" popover-placement="bottom" popover="Mint" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:darkseagreen" popover-placement="bottom" popover="Sea" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:palevioletred" popover-placement="bottom" popover="Plum" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:deepskyblue" popover-placement="bottom" popover="Turquoise" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:tomato" popover-placement="bottom" popover="Tomato" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:silver" popover-placement="bottom" popover="Gainsboro" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:burlywood" popover-placement="bottom" popover="Hazel" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:cornsilk" popover-placement="bottom" popover="Cream" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:lavender" popover-placement="bottom" popover="Lavender" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:olive" popover-placement="bottom" popover="Olive" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:yellow" popover-placement="bottom" popover="Lemon" popover-trigger="mouseenter"></span></li>
+       	 														<li><span style="background-color:steelblue" popover-placement="bottom" popover="Navy" popover-trigger="mouseenter"></span></li>
+       	 													</ul>
       													</div>
     													<div class="btn-group" dropdown is-open="0">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Transparency" popover-trigger="mouseenter">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Symbol transparency" popover-trigger="mouseenter">
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -127,7 +142,7 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Transparency" popover-trigger="mouseenter">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Fill transparency" popover-trigger="mouseenter">
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -145,7 +160,7 @@
           										<div class="form-group">
 													<div class="btn-toolbar">
 														<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Stroke pattern" popover-trigger="mouseenter">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Line pattern" popover-trigger="mouseenter">
         														Stroke <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -155,7 +170,7 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Stroke weight" popover-trigger="mouseenter">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Line weight" popover-trigger="mouseenter">
         														Weight <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -165,7 +180,7 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Stroke color" popover-trigger="mouseenter">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Line color" popover-trigger="mouseenter">
         														Color <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -175,7 +190,7 @@
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Transparency" popover-trigger="mouseenter">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Line transparency" popover-trigger="mouseenter">
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -193,7 +208,7 @@
           										<div class="form-group">
 													<div class="btn-toolbar">
 														<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Data source column" popover-trigger="mouseenter">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Source column" popover-trigger="mouseenter">
         														Source <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
