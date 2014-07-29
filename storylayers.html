@@ -43,7 +43,7 @@
         			<accordion-group ng-repeat="layer in layers" heading="{{layer.name}}" is-open="{{layer.open}}">
             			<!--carousel template-->
             			<div>
-  							<div style="height: 200px">
+  							<div style="height: 200px" ng-click="updateShowClassify(layer.id)">
     							<carousel interval="myInterval">
       								<slide ng-repeat="slide in layer.slides" active="slide.active">
       									<!--placeholder for style previews-->
@@ -51,7 +51,7 @@
         							</slide>
    				 				</carousel>
    				 			</div>
-   				 			<div class="container" style="border-top:1px solid gainsboro">
+   				 			<div class="container" style="border-top:1px solid gainsboro" ng-click="showClassify(layer.id)">
    				 				<div class="row">
     								<div class="col-md-12">
     									<!--placeholder for style options like buttons etc-->
@@ -179,7 +179,7 @@
 												</div>
 											</form>
           								</div>
-          								<div id="classtmpl" class="styletmpl">
+          								<div collapse="!layer.showClassify" id="classtmpl" class="styletmpl">
           									<!--template-->
           									<div class="tmpl-header">Classification</div>
           									<form class="tmpl-content">
