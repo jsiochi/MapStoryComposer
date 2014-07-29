@@ -1,5 +1,6 @@
 angular.module('storylayers.services', []).factory('drawSpace', function () {
     var canvas = document.getElementById('layerspace');
+    if(!canvas) {return;}
     var context = canvas.getContext('2d');
     
     var layerStyles = [];

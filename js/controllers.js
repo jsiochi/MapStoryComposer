@@ -16,22 +16,24 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         
         $scope.testColor = '#00ff00';
         
-        var PTslides = [{image: '../MapStoryComposer/img/styleslides/PTsimple.png', active: true},
-                        {image: '../MapStoryComposer/img/styleslides/PTchoropleth.png', active: false},
-                        {image: '../MapStoryComposer/img/styleslides/PTunique.png', active: false},
-                        {image: '../MapStoryComposer/img/styleslides/PTgraduated.png', active: false},
-                        {image: '../MapStoryComposer/img/styleslides/PTdensity.png', active: false}];
-                        
-        var LNslides = [{image: '../MapStoryComposer/img/styleslides/LNsimple.png', active: true},
-                        {image: '../MapStoryComposer/img/styleslides/LNchoropleth.png', active: false}, 
-                        {image: '../MapStoryComposer/img/styleslides/LNunique.png', active: false},
-                        {image: '../MapStoryComposer/img/styleslides/LNsymbols.png', active: false},
-                        {image: '../MapStoryComposer/img/styleslides/LNweighted.png', active: false}];
+        var slidePath = '../MapStoryComposer/img/styleslides/'
         
-        var PGslides = [{image: '../MapStoryComposer/img/styleslides/PGsimple.png', active: true},
-                        {image: '../MapStoryComposer/img/styleslides/PGchoropleth.png', active: false},
-                        {image: '../MapStoryComposer/img/styleslides/PGunique.png', active: false},
-                        {image: '../MapStoryComposer/img/styleslides/PGgraduated.png', active: false}];
+        var PTslides = [{image: slidePath + 'PTsimple.png', active: true},
+                        {image: slidePath + 'PTchoropleth.png', active: false},
+                        {image: slidePath + 'PTunique.png', active: false},
+                        {image: slidePath + 'PTgraduated.png', active: false},
+                        {image: slidePath + 'PTdensity.png', active: false}];
+                        
+        var LNslides = [{image: slidePath + 'LNsimple.png', active: true},
+                        {image: slidePath + 'LNchoropleth.png', active: false}, 
+                        {image: slidePath + 'LNunique.png', active: false},
+                        {image: slidePath + 'LNsymbols.png', active: false},
+                        {image: slidePath + 'LNweighted.png', active: false}];
+        
+        var PGslides = [{image: slidePath + 'PGsimple.png', active: true},
+                        {image: slidePath + 'PGchoropleth.png', active: false},
+                        {image: slidePath + 'PGunique.png', active: false},
+                        {image: slidePath + 'PGgraduated.png', active: false}];
         
         var allSlides = {'MultiPoint': PTslides, 'MultiLineString': LNslides, 'MultiPolygon': PGslides};
                          
@@ -45,7 +47,7 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         };
         
         $scope.showPanel = function(panelName, layerGeom) {
-            console.log(layerGeom);
+            //console.log(layerGeom);
             switch(panelName) {
                 case 'Symbol':
                     return layerGeom === 'MultiPoint';
@@ -85,6 +87,6 @@ angular.module('storylayers.controllers', ['storylayers.services'])
                 $scope.layers[i].open = (i === 0);
                 $scope.layers[i].max = 100;
             }
-            drawSpace.addLayerStyle($scope.layers.length);
+            //drawSpace.addLayerStyle($scope.layers.length);
         }
     }]);
