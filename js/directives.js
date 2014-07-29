@@ -9,10 +9,6 @@ angular.module('storylayers.directives', [])
                     event.stopPropagation();
                     ngModel.$setViewValue(args[0]);
                 });
-                
-                ngModel.$render = function() {
-                    //element.text(ngModel.$modelValue);
-                };
             }
         }
     })
@@ -21,9 +17,21 @@ angular.module('storylayers.directives', [])
             restrict: 'A',
             link: function($scope, element, attrs) {
                 element.on('mousedown', function(event) {
-                    console.log(element.text());
-                    console.log(attrs.param);
+                    //console.log(element.text());
+                    //console.log(attrs.param);
                     $scope.$emit(attrs.param,[element.text()]);
+                });
+            }
+        }
+    })
+    .directive('clickColor', function() {
+        return {
+            restrict: 'A',
+            link: function($scope, element, attrs) {
+                element.on('mousedown', function(event) {
+                    console.log(element.css('background-color'));
+                    //console.log(attrs.param);
+                    $scope.$emit(attrs.param,[element.css('background-color')]);
                 });
             }
         }

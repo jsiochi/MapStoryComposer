@@ -15,6 +15,11 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         });
         
         $scope.testColor = '#00ff00';
+        $scope.colorList = [['indianred','Red'],['skyblue','Sky'],['yellowgreen','Lime'],['gold','Gold'],['plum','Lilac'],
+                            ['salmon','Salmon'],['cornflowerblue','Cornflower'],['darkgray','Steel'],['lightgreen','Mint'],
+                            ['darkseagreen','Sea'],['palevioletred','Plum'],['deepskyblue','Turquoise'],['tomato','Tomato'],
+                            ['silver','Gainsboro'],['burlywood','Hazel'],['cornsilk','Cream'],['lavender','Lavender'],['olive','Olive'],
+                            ['yellow','Lemon'],['steelblue','Navy']];
         
         var slidePath = '../MapStoryComposer/img/styleslides/'
         
@@ -86,6 +91,7 @@ angular.module('storylayers.controllers', ['storylayers.services'])
                 $scope.layers[i].slides = JSON.parse(JSON.stringify(allSlides[$scope.layers[i].geometry.type].slice(0)));
                 $scope.layers[i].open = (i === 0);
                 $scope.layers[i].max = 100;
+                $scope.layers[i].style = {symbol: 'Circle'};
             }
             //drawSpace.addLayerStyle($scope.layers.length);
         }
