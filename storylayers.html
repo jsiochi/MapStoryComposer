@@ -179,6 +179,7 @@
           									<form class="tmpl-content">
           										<div class="form-group">
 													<div class="btn-toolbar">
+													
 														<div class="btn-group" dropdown is-open="status.isopen">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Source column" popover-trigger="mouseenter">
         														Source <span class="caret"></span>
@@ -189,13 +190,17 @@
        	 														<li><a href="#">Column 3</a></li>
       														</ul>
     													</div>
+    													
     													<div class="btn-group" dropdown is-open="status.isopen">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Quantization" popover-trigger="mouseenter">
         														Scheme <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">Natural</a></li>
-        														<li><a href="#">Normal</a></li>
+        														<li><a href="#">Natural Breaks</a></li>
+        														<li><a href="#">Equal Interval</a></li>
+        														<li><a href="#">Quantile</a></li>
+        														<li><a href="#">Geometric Interval</a></li>
+        														<li><a href="#">Standard Deviation</a></li>
       														</ul>
     													</div>
     													<div class="btn-group">
@@ -203,16 +208,32 @@
         													<label class="btn btn-xs btn-primary" ng-model="radioModel" btn-radio="5">5</label>
         													<label class="btn btn-xs btn-primary" ng-model="radioModel" btn-radio="7">7</label>
     													</div>
+    													
+    													<!--COLOR RAMP for CHOROPLETH-->
     													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled">
-        														Type <span class="caret"></span>
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Color Ramp" popover-trigger="mouseenter">
+        														 color ramp<span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">Color</a></li>
-        														<li><a href="#">Size</a></li>
-       	 														<li><a href="#">Random</a></li>
+        														<li><a href="#"><div class="gradient-monochrome"></div></a></li>
+        														<li><a href="#"><div class="gradient-rainbow"></div></a></li>
+        														<li><a href="#"><div class="gradient-redorange"></div></a></li>
+       	 														<li><a href="#"><div class="gradient-bluegreen"></div></a></li>
+       	 														<li><a href="#"><div class="gradient-yellowgreen"></div></a></li>
+       	 														<li><a href="#"><div class="gradient-blue"></div></a></li>
+       	 														<li><a href="#"><div class="gradient-pink"></div></a></li>
       														</ul>
     													</div>
+    													
+    													<div class="btn-group" dropdown is-open="0">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Size Range" popover-trigger="mouseenter">
+        														Range <span class="caret"></span>
+      														</button>
+      														<ul class="dropdown-menu" role="menu">
+      															<div range-slider min="0" max="100" model-max="layer.max" pin-handle="min" ng-click="updateStyle('fillOpacity',layer.max/100, layer.id)"></div>
+      														</ul>
+    													</div>
+    													
     												</div>
 												</div>
 											</form>
