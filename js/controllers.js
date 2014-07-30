@@ -23,22 +23,22 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         
         var slidePath = '../MapStoryComposer/img/styleslides/'
         
-        var PTslides = [{image: slidePath + 'PTsimple.png', active: true},
-                        {image: slidePath + 'PTchoropleth.png', active: false},
-                        {image: slidePath + 'PTunique.png', active: false},
-                        {image: slidePath + 'PTgraduated.png', active: false},
-                        {image: slidePath + 'PTdensity.png', active: false}];
+        var PTslides = [{image: slidePath + 'PTsimple.png', active: true, classify: false},
+                        {image: slidePath + 'PTchoropleth.png', active: false, classify: true},
+                        {image: slidePath + 'PTunique.png', active: false, classify: true},
+                        {image: slidePath + 'PTgraduated.png', active: false, classify: true},
+                        {image: slidePath + 'PTdensity.png', active: false, classify: true}];
                         
-        var LNslides = [{image: slidePath + 'LNsimple.png', active: true},
-                        {image: slidePath + 'LNchoropleth.png', active: false}, 
-                        {image: slidePath + 'LNunique.png', active: false},
-                        {image: slidePath + 'LNsymbols.png', active: false},
-                        {image: slidePath + 'LNweighted.png', active: false}];
+        var LNslides = [{image: slidePath + 'LNsimple.png', active: true, classify: false},
+                        {image: slidePath + 'LNchoropleth.png', active: false, classify: true}, 
+                        {image: slidePath + 'LNunique.png', active: false, classify: true},
+                        {image: slidePath + 'LNsymbols.png', active: false, classify: true},
+                        {image: slidePath + 'LNweighted.png', active: false, classify: true}];
         
-        var PGslides = [{image: slidePath + 'PGsimple.png', active: true},
-                        {image: slidePath + 'PGchoropleth.png', active: false},
-                        {image: slidePath + 'PGunique.png', active: false},
-                        {image: slidePath + 'PGgraduated.png', active: false}];
+        var PGslides = [{image: slidePath + 'PGsimple.png', active: true, classify: false},
+                        {image: slidePath + 'PGchoropleth.png', active: false, classify: true},
+                        {image: slidePath + 'PGunique.png', active: false, classify: true},
+                        {image: slidePath + 'PGgraduated.png', active: false, classify: true}];
         
         var allSlides = {'MultiPoint': PTslides, 'MultiLineString': LNslides, 'MultiPolygon': PGslides};
                          
@@ -51,6 +51,11 @@ angular.module('storylayers.controllers', ['storylayers.services'])
             drawLayers();
         };
         
+        $scope.setIndex = function(num, index) {
+            $scope.layers[num].activeSlide = index;
+            console.log(index);
+        };
+        
         $scope.showPanel = function(panelName, layerGeom) {
             //console.log(layerGeom);
             switch(panelName) {
@@ -59,6 +64,10 @@ angular.module('storylayers.controllers', ['storylayers.services'])
                 case 'Fill':
                     return layerGeom === 'MultiPolygon';
             }
+        };
+        
+        $scope.updateShowClassify = function(layerId) {
+            $scope.layers[layerId].showClassify = showClassify(layerId);
         };
         
         function drawLayers() {
@@ -83,6 +92,18 @@ angular.module('storylayers.controllers', ['storylayers.services'])
             }
         }
         
+        function showClassify(layerId) {
+            var i = 0;
+            console.log(layerId);
+            for(i = 0; i < $scope.layers[layerId].slides.length; i++) {
+                if($scope.layers[layerId].slides[i].active) {
+                    console.log(i);
+                    return $scope.layers[layerId].slides[i].classify;
+                }
+            }
+            return false;
+        }
+        
         function processLayers() {
             var i = 0;
             
@@ -91,6 +112,7 @@ angular.module('storylayers.controllers', ['storylayers.services'])
                 $scope.layers[i].slides = JSON.parse(JSON.stringify(allSlides[$scope.layers[i].geometry.type].slice(0)));
                 $scope.layers[i].open = (i === 0);
                 $scope.layers[i].max = 100;
+                $scope.layers[i].showClassify = false;
                 $scope.layers[i].style = {symbol: 'Circle'};
             }
             //drawSpace.addLayerStyle($scope.layers.length);
