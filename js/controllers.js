@@ -3,9 +3,12 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         
         var mockup = false;
         
+        $scope.layers = [];
+        
         dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/TestData.json').success(function(data) {
             $scope.layers = data.layers;
             processLayers();
+            //$scope.layer = $scope.layers[0];
             drawLayers();
             styleModel.addLayers($scope.layers);
         });
@@ -66,8 +69,8 @@ angular.module('storylayers.controllers', ['storylayers.services'])
             }
         };
         
-        $scope.updateShowClassify = function(layerId) {
-            $scope.layers[layerId].showClassify = showClassify(layerId);
+        $scope.updateShow = function(layerId) {
+            $scope.layers[layerId].activeSlide = showComponent(layerId);
         };
         
         function drawLayers() {
@@ -92,16 +95,16 @@ angular.module('storylayers.controllers', ['storylayers.services'])
             }
         }
         
-        function showClassify(layerId) {
+        function showComponent(layerId) {
             var i = 0;
             console.log(layerId);
             for(i = 0; i < $scope.layers[layerId].slides.length; i++) {
                 if($scope.layers[layerId].slides[i].active) {
                     console.log(i);
-                    return $scope.layers[layerId].slides[i].classify;
+                    return i;
                 }
             }
-            return false;
+            return 0;
         }
         
         function processLayers() {
@@ -111,8 +114,8 @@ angular.module('storylayers.controllers', ['storylayers.services'])
                 $scope.layers[i].id = i;
                 $scope.layers[i].slides = JSON.parse(JSON.stringify(allSlides[$scope.layers[i].geometry.type].slice(0)));
                 $scope.layers[i].open = (i === 0);
-                $scope.layers[i].max = 100;
-                $scope.layers[i].showClassify = false;
+                $scope.layers[i].max = 54;
+                $scope.layers[i].activeSlide = 0;
                 $scope.layers[i].style = {symbol: 'Circle'};
             }
             //drawSpace.addLayerStyle($scope.layers.length);

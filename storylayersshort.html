@@ -32,50 +32,38 @@
 </head>
     
 <!--This is just to test the directive with angular bootstrap elements-->
-<body ng-controller="drawCtrl"></body>
-
-														<div click-value ng-model="layer.style.fill" class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Fill pattern" popover-trigger="mouseenter">
-                                                                {{layer.style.fill}} <span class="caret"></span>
+<body ng-controller="drawCtrl">
+    <div>Test <br/> <br/> </div>
+    <div class="col-sm-4">
+    <accordion close-others="1">
+    <accordion-group ng-repeat="layer in layers" heading="{{layer.name}}" is-open="0">
+    <div>
+    <div class="container" style="border-top:1px solid gainsboro">
+    <div class="row">
+    <div class="col-md-12">
+    <div id="filltmpl" class="styletmpl">
+    <form class="tmpl-content">
+    <div class="form-group">
+    <div class="btn-toolbar">
+    <div class="btn-group" dropdown is-open="0">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Fill transparency" popover-trigger="mouseenter">
+        														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li click-set param="layer.style.fill"><a href="#">Solid</a></li>
-        														<li click-set param="layer.style.fill"><a href="#">Checkered</a></li>
-       	 														<li click-set param="layer.style.fill"><a href="#">Striped</a></li>
+      															<div range-slider min="0" max="100" model-max="layerMax" pin-handle="min"></div>
       														</ul>
     													</div>
-    <div click-value ng-model="layer.style.yeah" class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Fill pattern" popover-trigger="mouseenter">
-                                                                {{layer.style.yeah}} <span class="caret"></span>
-      														</button>
-      														<ul class="dropdown-menu" role="menu">
-        														<li click-set param="layer.style.yeah"><a href="#">Solidd</a></li>
-        														<li click-set param="layer.style.yeah"><a href="#">Checkeredyyy</a></li>
-       	 														<li click-set param="layer.style.yeah"><a href="#">Stripedyyy</a></li>
-      														</ul>
-    													</div>
-    <!--
-       	 														<li><span style="background-color:skyblue" popover-placement="bottom" popover="Sky" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:yellowgreen" popover-placement="bottom" popover="Lime" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:gold" popover-placement="bottom" popover="Gold" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:plum" popover-placement="bottom" popover="Lilac" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:salmon" popover-placement="bottom" popover="Salmon" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:cornflowerblue" popover-placement="bottom" popover="Cornflower" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:darkgray" popover-placement="bottom" popover="Steel" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:lightgreen" popover-placement="bottom" popover="Mint" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:darkseagreen" popover-placement="bottom" popover="Sea" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:palevioletred" popover-placement="bottom" popover="Plum" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:deepskyblue" popover-placement="bottom" popover="Turquoise" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:tomato" popover-placement="bottom" popover="Tomato" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:silver" popover-placement="bottom" popover="Gainsboro" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:burlywood" popover-placement="bottom" popover="Hazel" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:cornsilk" popover-placement="bottom" popover="Cream" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:lavender" popover-placement="bottom" popover="Lavender" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:olive" popover-placement="bottom" popover="Olive" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:yellow" popover-placement="bottom" popover="Lemon" popover-trigger="mouseenter"></span></li>
-       	 														<li><span style="background-color:steelblue" popover-placement="bottom" popover="Navy" popover-trigger="mouseenter"></span></li>
--->
-	
+        </div>
+        </div>
+        </form>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </accordion-group>
+        </accordion>
+        </div>
 </body>
 
 </html>
