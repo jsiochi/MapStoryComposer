@@ -73,12 +73,12 @@
     													</div>
     													<div class="btn-group" dropdown is-open="0">
       														<span popover-placement="top" popover="Symbol size" popover-trigger="mouseenter">
-        														<input type="number" min="0" max="30" step="1" value="10" name="some-name"/>
+        														<input type="number" min="0" max="30" step="1" value="10" name="symbol-size"/>
       														</span>
     													</div>
     													<div click-value ng-model="layer.style.fillColor" class="btn-group" dropdown is-open="0">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Symbol color" popover-trigger="mouseenter" ng-style="{'background-color':layer.style.fillColor}">
-        														Color <span class="caret"></span>
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Symbol color" popover-trigger="mouseenter" >
+        														<i style="border-radius:2px;border:1px solid white;margin-right:5px" ng-style="{'background-color':layer.style.fillColor}"> &nbsp; &nbsp; &nbsp; </i><span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu color-select" role="menu" style="padding:5px;width:150px">
        	 														<li ng-repeat="color in colorList"><span click-color param="layer.style.fillColor" ng-style="{'background-color':color[0]}" popover-placement="bottom" popover="{{color[1]}}" popover-trigger="mouseenter"></span></li>
@@ -112,19 +112,20 @@
        	 														<li><a href="#">Striped</a></li>
       														</ul>
     													</div>
-    													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Fill color" popover-trigger="mouseenter">
-        														Color <span class="caret"></span>
+    													<div click-value ng-model="layer.style.fillColor" class="btn-group" dropdown is-open="0">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Fill color" popover-trigger="mouseenter" >
+        														<i style="border-radius:2px;border:1px solid white;margin-right:5px" ng-style="{'background-color':layer.style.fillColor}"> &nbsp; &nbsp; &nbsp; </i><span class="caret"></span>
       														</button>
-      														<ul class="dropdown-menu" role="menu">
-      														</ul>
-    													</div>
-    													<div class="btn-group" dropdown is-open="status.isopen">
+      														<ul class="dropdown-menu color-select" role="menu" style="padding:5px;width:150px">
+       	 														<li ng-repeat="color in colorList"><span click-color param="layer.style.fillColor" ng-style="{'background-color':color[0]}" popover-placement="bottom" popover="{{color[1]}}" popover-trigger="mouseenter"></span></li>
+       	 													</ul>
+      													</div>
+    													<div class="btn-group" dropdown is-open="0">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Fill transparency" popover-trigger="mouseenter">
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<div range-slider min="0" max="100" model-max="max1" pin-handle="min" orientation="vertical"></div>
+      															<div range-slider min="0" max="100" model-max="layer.max" pin-handle="min" orientation="vertical" ng-click="updateStyle('fillOpacity',layer.max/100, layer.id)"></div>
       														</ul>
     													</div>
 													</div>
@@ -138,7 +139,7 @@
           										<div class="form-group">
 													<div class="btn-toolbar">
 														<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Line pattern" popover-trigger="mouseenter">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Stroke pattern" popover-trigger="mouseenter">
         														Stroke <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -147,32 +148,25 @@
        	 														<li><a href="#">Dotted</a></li>
       														</ul>
     													</div>
-    													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Line weight" popover-trigger="mouseenter">
-        														Weight <span class="caret"></span>
-      														</button>
-      														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">1</a></li>
-        														<li><a href="#">2</a></li>
-       	 														<li><a href="#">3</a></li>
-      														</ul>
+    													<div class="btn-group" dropdown is-open="0">
+      														<span popover-placement="top" popover="Stroke weight" popover-trigger="mouseenter">
+        														<input type="number" min="0" max="30" step="1" value="10" name="stroke-weight"/>
+      														</span>
     													</div>
-    													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Line color" popover-trigger="mouseenter">
-        														Color <span class="caret"></span>
+    													<div click-value ng-model="layer.style.fillColor" class="btn-group" dropdown is-open="0">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Stroke color" popover-trigger="mouseenter" >
+        														<i style="border-radius:2px;border:1px solid white;margin-right:5px" ng-style="{'background-color':layer.style.fillColor}"> &nbsp; &nbsp; &nbsp; </i><span class="caret"></span>
       														</button>
-      														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">Blue</a></li>
-        														<li><a href="#">Red</a></li>
-       	 														<li><a href="#">Green</a></li>
-      														</ul>
-    													</div>
-    													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Line transparency" popover-trigger="mouseenter">
+      														<ul class="dropdown-menu color-select" role="menu" style="padding:5px;width:150px">
+       	 														<li ng-repeat="color in colorList"><span click-color param="layer.style.fillColor" ng-style="{'background-color':color[0]}" popover-placement="bottom" popover="{{color[1]}}" popover-trigger="mouseenter"></span></li>
+       	 													</ul>
+      													</div>
+    													<div class="btn-group" dropdown is-open="0">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Stroke transparency" popover-trigger="mouseenter">
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-      															<div range-slider min="0" max="100" model-max="max1" pin-handle="min" orientation="vertical"></div>
+      															<div range-slider min="0" max="100" model-max="layer.max" pin-handle="min" orientation="vertical" ng-click="updateStyle('fillOpacity',layer.max/100, layer.id)"></div>
       														</ul>
     													</div>
 													</div>
@@ -238,15 +232,10 @@
         														<li><a href="#">Column 2</a></li>
       														</ul>
     													</div>
-    													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Font size" popover-trigger="mouseenter">
-        														Size <span class="caret"></span>
-      														</button>
-      														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">1</a></li>
-        														<li><a href="#">2</a></li>
-       	 														<li><a href="#">3</a></li>
-      														</ul>
+    													<div class="btn-group" dropdown is-open="0">
+      														<span popover-placement="top" popover="Font size" popover-trigger="mouseenter">
+        														<input type="number" min="0" max="30" step="1" value="10" name="symbol-size"/>
+      														</span>
     													</div>
     													<div class="btn-group" dropdown is-open="status.isopen">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Font style" popover-trigger="mouseenter">
@@ -257,16 +246,14 @@
         														<li><a href="#">Helvetica</a></li>
       														</ul>
     													</div>
-    													<div class="btn-group" dropdown is-open="status.isopen">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Font color" popover-trigger="mouseenter">
-        														Color <span class="caret"></span>
+    													<div click-value ng-model="layer.style.fillColor" class="btn-group" dropdown is-open="0">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Font color" popover-trigger="mouseenter" >
+        														<i style="border-radius:2px;border:1px solid white;margin-right:5px" ng-style="{'background-color':layer.style.fillColor}"> &nbsp; &nbsp; &nbsp; </i><span class="caret"></span>
       														</button>
-      														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">Red</a></li>
-        														<li><a href="#">Blue</a></li>
-       	 														<li><a href="#">Black</a></li>
-      														</ul>
-    													</div>
+      														<ul class="dropdown-menu color-select" role="menu" style="padding:5px;width:150px">
+       	 														<li ng-repeat="color in colorList"><span click-color param="layer.style.fillColor" ng-style="{'background-color':color[0]}" popover-placement="bottom" popover="{{color[1]}}" popover-trigger="mouseenter"></span></li>
+       	 													</ul>
+      													</div>
     													<div class="btn-group">
         													<label class="btn btn-xs btn-primary" ng-model="checkModel.bold" btn-checkbox><strong>B</strong></label>
         													<label class="btn btn-xs btn-primary" ng-model="checkModel.underline" btn-checkbox><u>U</u></label>
