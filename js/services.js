@@ -173,24 +173,7 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
     var layerStyles = [];
     
     function addLayerStyle(layerName, geomType) {
-        layerStyles.push({name: layerName, geom: geomType, style: {
-                graphicName: 'circle', 
-                pointRadius: '6', 
-                fillColor: '#ee9900', 
-                fillOpacity: '0.4', 
-                strokeDashstyle: 'solid',
-                strokeWidth: '1',
-                strokeColor: '#ee9900',
-                strokeOpacity: '1',
-                label: null,
-                fontFamily: null,
-                fontSize: '12',
-                fontStyle: 'bold',
-                fontColor: 'black',
-                fontWeight: '200',
-                fontOpacity: '1'
-            }, classify: {}
-        });
+        layerStyles.push(getLayerStyleTemplate(layerName, geomType));
     }
     
     var styleModel = {
@@ -206,6 +189,27 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
             layerStyles[layer].style[property] = value + '';
             console.log(layerStyles[0]);
             console.log(layerStyles[1]);
+        },
+        
+        getLayerStyleTemplate: function(layerName, geomType) {
+            return {
+                    graphicName: 'Circle', 
+                    pointRadius: 10, 
+                    fillColor: '#cd5c5c', 
+                    fillOpacity: '0.54',
+                    strokeDashstyle: 'solid',
+                    strokeWidth: '1',
+                    strokeColor: '#cd5c5c',
+                    strokeOpacity: '1',
+                    label: null,
+                    fontFamily: null,
+                    fontSize: '12',
+                    fontStyle: 'bold',
+                    fontColor: 'black',
+                    fontWeight: '200',
+                    fontOpacity: '1',
+                    classify: {}
+            };
         }
     };
     
