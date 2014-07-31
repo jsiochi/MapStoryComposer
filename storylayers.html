@@ -102,14 +102,14 @@
           									<form class="tmpl-content">
           										<div class="form-group">
 													<div class="btn-toolbar">
-														<div class="btn-group" dropdown is-open="status.isopen">
+														<div class="btn-group" dropdown is-open="status.isopen" click-value ng-model="layer.style.fillType">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Fill pattern" popover-trigger="mouseenter">
-        														Fill <span class="caret"></span>
+                                                                {{layer.style.fillType}} <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">Solid</a></li>
-        														<li><a href="#">Checkered</a></li>
-       	 														<li><a href="#">Striped</a></li>
+        														<li click-set param="layer.style.fillType"><a href="#">Solid</a></li>
+        														<li click-set param="layer.style.fillType"><a href="#">Checkered</a></li>
+       	 														<li click-set param="layer.style.fillType"><a href="#">Striped</a></li>
       														</ul>
     													</div>
     													<div click-value ng-model="layer.style.fillColor" class="btn-group" dropdown is-open="0">
@@ -125,7 +125,7 @@
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-      															<div range-slider min="0" max="100" model-max="layer.max" pin-handle="min"></div>
+      															<div range-slider min="0" max="100" model-max="layer.style.fillOpacity" pin-handle="min"></div>
       														</ul>
     													</div>
 													</div>
@@ -138,27 +138,27 @@
           									<form class="tmpl-content">
           										<div class="form-group">
 													<div class="btn-toolbar">
-														<div class="btn-group" dropdown is-open="status.isopen">
+														<div class="btn-group" dropdown is-open="status.isopen" click-value ng-model="layer.style.strokeDashstyle">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Stroke pattern" popover-trigger="mouseenter">
-        														Stroke <span class="caret"></span>
+                                                                {{layer.style.strokeDashstyle}} <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">Solid</a></li>
-        														<li><a href="#">Dashed</a></li>
-       	 														<li><a href="#">Dotted</a></li>
+        														<li click-set param="layer.style.strokeDashstyle"><a href="#">Solid</a></li>
+        														<li click-set param="layer.style.strokeDashstyle"><a href="#">Dashed</a></li>
+       	 														<li click-set param="layer.style.strokeDashstyle"><a href="#">Dotted</a></li>
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="0">
       														<span popover-placement="top" popover="Stroke weight" popover-trigger="mouseenter">
-        														<input type="number" min="0" max="30" step="1" value="10" name="stroke-weight"/>
+        														<input type="number" min="0" max="30" step="1" value="10" name="stroke-weight" ng-model="layer.style.strokeWidth"/>
       														</span>
     													</div>
-    													<div click-value ng-model="layer.style.fillColor" class="btn-group" dropdown is-open="0">
+    													<div click-value ng-model="layer.style.strokeColor" class="btn-group" dropdown is-open="0">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Stroke color" popover-trigger="mouseenter" >
-        														<i style="border-radius:2px;border:1px solid white;margin-right:5px" ng-style="{'background-color':layer.style.fillColor}"> &nbsp; &nbsp; &nbsp; </i><span class="caret"></span>
+        														<i style="border-radius:2px;border:1px solid white;margin-right:5px" ng-style="{'background-color':layer.style.strokeColor}"> &nbsp; &nbsp; &nbsp; </i><span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu color-select" role="menu" style="padding:5px;width:150px">
-       	 														<li ng-repeat="color in colorList"><span click-color param="layer.style.fillColor" ng-style="{'background-color':color[0]}" popover-placement="bottom" popover="{{color[1]}}" popover-trigger="mouseenter"></span></li>
+       	 														<li ng-repeat="color in colorList"><span click-color param="layer.style.strokeColor" ng-style="{'background-color':color[0]}" popover-placement="bottom" popover="{{color[1]}}" popover-trigger="mouseenter"></span></li>
        	 													</ul>
       													</div>
     													<div class="btn-group" dropdown is-open="0">
@@ -166,7 +166,7 @@
         														Alpha <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-      															<div range-slider min="0" max="100" model-max="layer.max" pin-handle="min"></div>
+      															<div range-slider min="0" max="100" model-max="layer.style.strokeOpacity" pin-handle="min"></div>
       														</ul>
     													</div>
 													</div>
@@ -230,7 +230,7 @@
         														Range <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-      															<div range-slider min="0" max="100" model-max="layer.max" model-min="layer.min" ng-click="updateStyle('fillOpacity',layer.max/100, layer.id)"></div>
+      															<div range-slider min="0" max="100" model-max="layer.max" model-min="layer.min"></div>
       														</ul>
     													</div>
     													
@@ -244,13 +244,13 @@
           									<form class="tmpl-content">
           										<div class="form-group">
 													<div class="btn-toolbar">
-														<div class="btn-group" dropdown is-open="status.isopen">
+														<div class="btn-group" dropdown is-open="status.isopen" click-value ng-model="layer.style.label">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Label source" popover-trigger="mouseenter">
-        														Source <span class="caret"></span>
+                                                                {{layer.style.label}} <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">Column 1</a></li>
-        														<li><a href="#">Column 2</a></li>
+        														<li click-set param="layer.style.label"><a href="#">Column 1</a></li>
+        														<li click-set param="layer.style.label"><a href="#">Column 2</a></li>
       														</ul>
     													</div>
     													<div class="btn-group" dropdown is-open="0">
