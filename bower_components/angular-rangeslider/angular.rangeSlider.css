@@ -48,20 +48,7 @@
   position: relative;
   margin: 10px 0 30px;
   padding: 4px;
-  border: 1px solid #ccc;
   background: #fff;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border linear, box-shadow linear;
-  -webkit-transition-delay: 0.2s, 0.2s;
-  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  transition: border linear 0.2s, box-shadow linear 0.2s;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   /*------------------------------------*\
       RUNNER
   \*------------------------------------*/
@@ -115,16 +102,21 @@
   top: 50%;
   left: 0;
   right: 100%;
+  width: 125px;
   height: 8px;
   margin: -4px 0 0 0;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
   background-color: #2f96b4;
-  background-image: -webkit-linear-gradient(#5bc0de, #2f96b4);
-  background-image: -moz-linear-gradient(#5bc0de, #2f96b4);
-  background-image: -o-linear-gradient(#5bc0de, #2f96b4);
-  background-image: linear-gradient(#5bc0de, #2f96b4);
+  background: rgba(230,230,230,1);
+  background: -moz-linear-gradient(left, rgba(230,230,230,1) 0%, rgba(82,82,82,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(230,230,230,1)), color-stop(100%, rgba(82,82,82,1)));
+  background: -webkit-linear-gradient(left, rgba(230,230,230,1) 0%, rgba(82,82,82,1) 100%);
+  background: -o-linear-gradient(left, rgba(230,230,230,1) 0%, rgba(82,82,82,1) 100%);
+  background: -ms-linear-gradient(left, rgba(230,230,230,1) 0%, rgba(82,82,82,1) 100%);
+  background: linear-gradient(to right, rgba(230,230,230,1) 0%, rgba(82,82,82,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6e6e6', endColorstr='#525252', GradientType=1 );
 }
 /* line 125, scss/angular.rangeSlider.scss */
 .ngrs-range-slider .ngrs-handle {
@@ -162,11 +154,9 @@
 }
 /* line 165, scss/angular.rangeSlider.scss */
 .ngrs-range-slider .ngrs-handle-min i {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFNJREFUeNpiYMAEXEDsA+OwoEnKALETEHOgK2AEYhMgNkQ3DqSAB6pLAot1DExIJmAFzED8C4hvQdnIppyFKYCBp0D8CohloVafxWUqN7I3AQIMAKw6B24pOi8lAAAAAElFTkSuQmCC");
 }
 /* line 172, scss/angular.rangeSlider.scss */
 .ngrs-range-slider .ngrs-handle-max i {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFdJREFUeNpiYEAAHyDmYkADzEhsByBWA+K3QPwJmwJjIGYBYlUgZgLi59gUwIAkEEsD8VMmBtyAkQFqJDZwAYjPAPE/dAU/gHg/ED/GpgvkTW50QYAAAwADfwrM5sqplgAAAABJRU5ErkJggg==");
 }
 /* line 182, scss/angular.rangeSlider.scss */
 .ngrs-range-slider .ngrs-value {
@@ -319,10 +309,6 @@
 }
 /* line 361, scss/angular.rangeSlider.scss */
 .ngrs-range-slider.ngrs-focus {
-  border-color: rgba(82, 168, 236, 0.8);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 /* line 372, scss/angular.rangeSlider.scss */
 .ngrs-range-slider.ngrs-disabled, .ngrs-range-slider.ngrs-disabled.ngrs-focus {
