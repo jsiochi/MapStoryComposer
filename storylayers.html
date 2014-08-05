@@ -69,10 +69,46 @@
       														<button type="button" class="btn btn-xs btn-fix btn-primary dropdown-toggle" ng-disabled="disabled"  popover-placement="top" popover="Symbol" popover-trigger="mouseenter">
                                                                 {{layer.style.graphicName}} <span class="caret"></span>
       														</button>
-                                                            <ul class="dropdown-menu" role="menu">
-        														<li click-set param="layer.style.graphicName" ng-repeat="symbol in presets.symbol.symbol">
-                                                                    <a href="#">{{symbol}}</a>
-                                                                </li>
+                                                            <ul class="dropdown-menu symbol-select" style="padding:5px;width:250px">
+                                                            	<li><span><img src="svg/circle-18.svg" /></span></li>
+        														<li><span><img src="svg/square-18.svg" /></li>
+        														<li><span><img src="svg/triangle-18.svg" /></span></li>
+        														<li><span><img src="svg/heart-18.svg" /></span></li>
+        														<li><span><img src="svg/star-18.svg" /></span></li>
+        														<li><span><img src="svg/marker-18.svg" /></span></li>
+        														<li><span><img src="svg/park-18.svg" /></span></li>
+        														<li><span><img src="svg/lodging-18.svg" /></span></li>
+        														<li><span><img src="svg/monument-18.svg" /></span></li>
+        														<li><span><img src="svg/airport-18.svg" /></li>
+        														<li><span><img src="svg/rail-18.svg" /></span></li>
+        														<li><span><img src="svg/ferry-18.svg" /></span></li>
+        														<li><span><img src="svg/harbor-18.svg" /></span></li>
+        														<li><span><img src="svg/bicycle-18.svg" /></span></li>
+        														<li><span><img src="svg/art-gallery-18.svg" /></span></li>
+        														<li><span><img src="svg/college-18.svg" /></span></li>
+        														<li><span><img src="svg/library-18.svg" /></li>
+        														<li><span><img src="svg/town-hall-18.svg" /></span></li>
+        														<li><span><img src="svg/restaurant-18.svg" /></span></li>
+        														<li><span><img src="svg/grocery-18.svg" /></span></li>
+        														<li><span><img src="svg/hospital-18.svg" /></span></li>
+        														<li><span><img src="svg/industrial-18.svg" /></span></li>
+        														<li><span><img src="svg/commercial-18.svg" /></span></li>
+        														<li><span><img src="svg/water-18.svg" /></li>
+        														<li><span><img src="svg/music-18.svg" /></span></li>
+        														<li><span><img src="svg/city-18.svg" /></span></li>
+        														<li><span><img src="svg/car-18.svg" /></span></li>
+        														<li><span><img src="svg/chemist-18.svg" /></span></li>
+        														<li><span><img src="svg/village-18.svg" /></span></li>
+        														<li><span><img src="svg/zoo-18.svg" /></span></li>
+        														<li><span><img src="svg/theatre-18.svg" /></span></li>
+        														<li><span><img src="svg/danger-18.svg" /></span></li>
+        														<li><span><img src="svg/camera-18.svg" /></li>
+        														<li><span><img src="svg/farm-18.svg" /></span></li>
+        														<li><span><img src="svg/shop-18.svg" /></span></li>
+        														<li><span><img src="svg/cafe-18.svg" /></span></li>
+        														<li><span><img src="svg/police-18.svg" /></span></li>
+        														<li><span><img src="svg/golf-18.svg" /></span></li>
+        														<li><span><img src="svg/suitcase-18.svg" /></span></li>
       														</ul>
     													</div>
     													<div ng-show="layer.activeSlide != 3" class="btn-group" dropdown is-open="0">
@@ -107,7 +143,7 @@
           										<div class="form-group">
 													<div class="btn-toolbar">
 														<div class="btn-group" dropdown is-open="status.isopen" click-value ng-model="layer.style.fillType">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Fill pattern" popover-trigger="mouseenter">
+      														<button type="button" class="btn btn-fix btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Fill pattern" popover-trigger="mouseenter">
                                                                 {{layer.style.fillType}} <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -143,7 +179,7 @@
           										<div class="form-group">
 													<div class="btn-toolbar">
 														<div class="btn-group" dropdown is-open="status.isopen" click-value ng-model="layer.style.strokeDashstyle">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Stroke pattern" popover-trigger="mouseenter">
+      														<button type="button" class="btn btn-fix btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Stroke pattern" popover-trigger="mouseenter">
                                                                 {{layer.style.strokeDashstyle}} <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
@@ -255,7 +291,7 @@
           										<div class="form-group">
 													<div class="btn-toolbar">
 														<div class="btn-group" dropdown is-open="status.isopen" click-value ng-model="layer.style.label">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Label source" popover-trigger="mouseenter">
+      														<button type="button" class="btn btn-xs btn-fix btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Label source" popover-trigger="mouseenter">
                                                                 {{layer.style.label}} <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
