@@ -66,7 +66,7 @@
           										<div class="form-group">
                                                    <div class="btn-toolbar">
 														<div click-value ng-model="layer.style.graphicName" class="btn-group" dropdown is-open="false">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled"  popover-placement="top" popover="Symbol" popover-trigger="mouseenter">
+      														<button type="button" class="btn btn-xs btn-fix btn-primary dropdown-toggle" ng-disabled="disabled"  popover-placement="top" popover="Symbol" popover-trigger="mouseenter">
                                                                 {{layer.style.graphicName}} <span class="caret"></span>
       														</button>
                                                             <ul class="dropdown-menu" role="menu">
@@ -228,16 +228,19 @@
        	 														<li><a href="#"><div class="gradient-pink"></div></a></li>
       														</ul>
     													</div>
-    													
+
+    			
     													<!-- RANGE SLIDER for GRADUATED-->
+    													<!--<div class="btn-group" dropdown is-open="0">-->
+
     													<div ng-show="layer.activeSlide == 3" class="btn-group" dropdown is-open="0">
+
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Size Range" popover-trigger="mouseenter">
         														Range <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
 
-      															<div range-slider min="0" max="100" model-max="layer.max" model-min="layer.min"></div>
-
+      															<div range-slider min="1" max="30" model-max="layer.max" model-min="layer.min" prevent-equal-min-max="true" step="3" style="width:auto"></div>
       														</ul>
     													</div>
     													
