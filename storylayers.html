@@ -65,65 +65,33 @@
           									<form class="tmpl-content">
           										<div class="form-group">
                                                    <div class="btn-toolbar">
-														<div click-value ng-model="layer.style.graphicName" class="btn-group" dropdown is-open="false">
-      														<button type="button" class="btn btn-xs btn-fix btn-primary dropdown-toggle" ng-disabled="disabled"  popover-placement="top" popover="Symbol" popover-trigger="mouseenter">
-                                                                {{layer.style.graphicName}} <span class="caret"></span>
+                                                       
+														<div class="btn-group" dropdown click-value ng-model="layer.style.externalGraphic">
+      														<button type="button" class="btn btn-xs btn-fix btn-primary dropdown-toggle" popover-placement="top" popover="Symbol" popover-trigger="mouseenter">
+                                                                <span><img ng-src="{{layer.style.externalGraphic}}"><img/></span>
+                                                                <span class="caret"></span>
       														</button>
-                                                            <ul class="dropdown-menu symbol-select" style="padding:5px;width:250px">
-                                                            	<li><span><img src="svg/circle-18.svg" /></span></li>
-        														<li><span><img src="svg/square-18.svg" /></li>
-        														<li><span><img src="svg/triangle-18.svg" /></span></li>
-        														<li><span><img src="svg/heart-18.svg" /></span></li>
-        														<li><span><img src="svg/star-18.svg" /></span></li>
-        														<li><span><img src="svg/marker-18.svg" /></span></li>
-        														<li><span><img src="svg/park-18.svg" /></span></li>
-        														<li><span><img src="svg/lodging-18.svg" /></span></li>
-        														<li><span><img src="svg/monument-18.svg" /></span></li>
-        														<li><span><img src="svg/airport-18.svg" /></li>
-        														<li><span><img src="svg/rail-18.svg" /></span></li>
-        														<li><span><img src="svg/ferry-18.svg" /></span></li>
-        														<li><span><img src="svg/harbor-18.svg" /></span></li>
-        														<li><span><img src="svg/bicycle-18.svg" /></span></li>
-        														<li><span><img src="svg/art-gallery-18.svg" /></span></li>
-        														<li><span><img src="svg/college-18.svg" /></span></li>
-        														<li><span><img src="svg/library-18.svg" /></li>
-        														<li><span><img src="svg/town-hall-18.svg" /></span></li>
-        														<li><span><img src="svg/restaurant-18.svg" /></span></li>
-        														<li><span><img src="svg/grocery-18.svg" /></span></li>
-        														<li><span><img src="svg/hospital-18.svg" /></span></li>
-        														<li><span><img src="svg/industrial-18.svg" /></span></li>
-        														<li><span><img src="svg/commercial-18.svg" /></span></li>
-        														<li><span><img src="svg/water-18.svg" /></li>
-        														<li><span><img src="svg/music-18.svg" /></span></li>
-        														<li><span><img src="svg/city-18.svg" /></span></li>
-        														<li><span><img src="svg/car-18.svg" /></span></li>
-        														<li><span><img src="svg/chemist-18.svg" /></span></li>
-        														<li><span><img src="svg/village-18.svg" /></span></li>
-        														<li><span><img src="svg/zoo-18.svg" /></span></li>
-        														<li><span><img src="svg/theatre-18.svg" /></span></li>
-        														<li><span><img src="svg/danger-18.svg" /></span></li>
-        														<li><span><img src="svg/camera-18.svg" /></li>
-        														<li><span><img src="svg/farm-18.svg" /></span></li>
-        														<li><span><img src="svg/shop-18.svg" /></span></li>
-        														<li><span><img src="svg/cafe-18.svg" /></span></li>
-        														<li><span><img src="svg/police-18.svg" /></span></li>
-        														<li><span><img src="svg/golf-18.svg" /></span></li>
-        														<li><span><img src="svg/suitcase-18.svg" /></span></li>
+                                                            <ul class="dropdown-menu symbol-select" role="menu" style="padding:5px;width:250px">
+                                                            	<div><li ng-repeat="img in imgList"><span popover-placement="top" popover="" popover-trigger="mouseenter"><img click-img param="layer.style.externalGraphic" ng-src="{{img}}"><img/></span></li></div>
       														</ul>
     													</div>
+                                                       
     													<div ng-show="layer.activeSlide != 3" class="btn-group" dropdown is-open="0">
       														<span popover-placement="top" popover="Symbol size" popover-trigger="mouseenter">
         														<input type="number" min="0" max="30" step="1" value="10" name="symbol-size" ng-model="layer.style.pointRadius"/>
       														</span>
     													</div>
-    													<div ng-show="layer.activeSlide != 1 && layer.activeSlide != 2" click-value ng-model="layer.style.fillColor" class="btn-group" dropdown is-open="0">
-      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Symbol color" popover-trigger="mouseenter" >
+                                                       
+    													<div class="btn-group" dropdown ng-show="layer.activeSlide != 1 && layer.activeSlide != 2" click-value ng-model="layer.style.fillColor">
+      														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" popover-placement="top" popover="Symbol color" popover-trigger="mouseenter">
         														<i style="border-radius:2px;border:1px solid white;margin-right:5px" ng-style="{'background-color':layer.style.fillColor}"> &nbsp; &nbsp; &nbsp; </i><span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu color-select" role="menu" style="padding:5px;width:150px">
        	 														<li ng-repeat="color in colorList"><span click-color param="layer.style.fillColor" ng-style="{'background-color':color[0]}" popover-placement="bottom" popover="{{color[1]}}" popover-trigger="mouseenter"></span></li>
+                                                                <input no-close popover-placement="top" popover="Use any rgb or hex color" popover-trigger="mouseenter" type="text" style="margin:5px 0; width:95%; text-align: center" ng-model="layer.style.fillColor"/>
        	 													</ul>
       													</div>
+                                                       
     													<div class="btn-group" dropdown is-open="0">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Symbol transparency" popover-trigger="mouseenter">
                                                                 {{layer.style.fillOpacity}} <span class="caret"></span>
@@ -158,6 +126,7 @@
       														</button>
       														<ul class="dropdown-menu color-select" role="menu" style="padding:5px;width:150px">
        	 														<li ng-repeat="color in colorList"><span click-color param="layer.style.fillColor" ng-style="{'background-color':color[0]}" popover-placement="bottom" popover="{{color[1]}}" popover-trigger="mouseenter"></span></li>
+                                                                <input no-close popover-placement="top" popover="Use any rgb or hex color" popover-trigger="mouseenter" type="text" style="margin:5px 0; width:95%; text-align: center" ng-model="layer.style.fillColor"/>
        	 													</ul>
       													</div>
     													<div class="btn-group" dropdown is-open="0">
@@ -199,6 +168,7 @@
       														</button>
       														<ul class="dropdown-menu color-select" role="menu" style="padding:5px;width:150px">
        	 														<li ng-repeat="color in colorList"><span click-color param="layer.style.strokeColor" ng-style="{'background-color':color[0]}" popover-placement="bottom" popover="{{color[1]}}" popover-trigger="mouseenter"></span></li>
+                                                                <input no-close popover-placement="top" popover="Use any rgb or hex color" popover-trigger="mouseenter" type="text" style="margin:5px 0; width:95%; text-align: center" ng-model="layer.style.strokeColor"/>
        	 													</ul>
       													</div>
     													<div class="btn-group" dropdown is-open="0">
@@ -313,12 +283,13 @@
         														<li><a href="#">Helvetica</a></li>
       														</ul>
     													</div>
-    													<div click-value ng-model="layer.style.fillColor" class="btn-group" dropdown is-open="0">
+    													<div click-value ng-model="layer.style.fontColor" class="btn-group" dropdown is-open="0">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Font color" popover-trigger="mouseenter" >
-        														<i style="border-radius:2px;border:1px solid white;margin-right:5px" ng-style="{'background-color':layer.style.fillColor}"> &nbsp; &nbsp; &nbsp; </i><span class="caret"></span>
+        														<i style="border-radius:2px;border:1px solid white;margin-right:5px" ng-style="{'background-color':layer.style.fontColor}"> &nbsp; &nbsp; &nbsp; </i><span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu color-select" role="menu" style="padding:5px;width:150px">
-       	 														<li ng-repeat="color in colorList"><span click-color param="layer.style.fillColor" ng-style="{'background-color':color[0]}" popover-placement="bottom" popover="{{color[1]}}" popover-trigger="mouseenter"></span></li>
+       	 														<li ng-repeat="color in colorList"><span click-color param="layer.style.fontColor" ng-style="{'background-color':color[0]}" popover-placement="bottom" popover="{{color[1]}}" popover-trigger="mouseenter"></span></li>
+                                                                <input no-close popover-placement="top" popover="Use any rgb or hex color" popover-trigger="mouseenter" type="text" style="margin:5px 0; width:95%; text-align: center" ng-model="layer.style.fontColor"/>
        	 													</ul>
       													</div>
     													<div class="btn-group">

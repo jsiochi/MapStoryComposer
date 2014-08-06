@@ -193,14 +193,15 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
         
         getLayerStyleTemplate: function(layerName, geomType) {
             return {
-                    graphicName: 'Circle', 
+                    graphicName: 'Circle',
+                    externalGraphic: 'svg/circle-18.svg',
                     pointRadius: 10, 
-                    fillColor: '#cd5c5c', 
-                    fillOpacity: '0.54',
+                    fillColor: 'rgb(205, 92, 92)', 
+                    fillOpacity: 54,
                     fillType: 'Solid',
                     strokeDashstyle: 'solid',
                     strokeWidth: 10,
-                    strokeColor: '#cd5c5c',
+                    strokeColor: 'rgb(205, 92, 92)',
                     strokeOpacity: '0.54',
                     label: null,
                     fontFamily: 'Arial',

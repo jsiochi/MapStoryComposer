@@ -5,6 +5,8 @@ angular.module('storylayers.controllers', ['storylayers.services'])
         
         $scope.layers = [];
         
+        $scope.beopen = false;
+        
         dataLoader.load('https://dl.dropboxusercontent.com/u/63253018/TestData.json').success(function(data) {
             $scope.layers = data.layers;
             processLayers();
@@ -21,6 +23,15 @@ angular.module('storylayers.controllers', ['storylayers.services'])
                             ['darkseagreen','Sea'],['palevioletred','Plum'],['deepskyblue','Turquoise'],['tomato','Tomato'],
                             ['silver','Gainsboro'],['burlywood','Hazel'],['cornsilk','Cream'],['lavender','Lavender'],['olive','Olive'],
                             ['yellow','Lemon'],['steelblue','Navy']];
+        
+        $scope.imgList = ['svg/circle-18.svg', 'svg/square-18.svg', 'svg/triangle-18.svg', 'svg/heart-18.svg', 'svg/star-18.svg', 
+                          'svg/marker-18.svg', 'svg/park-18.svg', 'svg/lodging-18.svg', 'svg/monument-18.svg', 'svg/airport-18.svg', 
+                          'svg/rail-18.svg', 'svg/ferry-18.svg', 'svg/harbor-18.svg', 'svg/bicycle-18.svg', 'svg/art-gallery-18.svg', 
+                          'svg/college-18.svg', 'svg/library-18.svg', 'svg/town-hall-18.svg', 'svg/restaurant-18.svg', 'svg/grocery-18.svg', 
+                          'svg/hospital-18.svg', 'svg/industrial-18.svg', 'svg/commercial-18.svg', 'svg/water-18.svg', 'svg/music-18.svg', 
+                          'svg/city-18.svg', 'svg/car-18.svg', 'svg/chemist-18.svg', 'svg/village-18.svg', 'svg/zoo-18.svg', 
+                          'svg/theatre-18.svg', 'svg/danger-18.svg', 'svg/camera-18.svg', 'svg/farm-18.svg', 'svg/shop-18.svg', 
+                          'svg/cafe-18.svg', 'svg/police-18.svg', 'svg/golf-18.svg', 'svg/suitcase-18.svg'];
         
         var slidePath = '../MapStoryComposer/img/styleslides/'
         
