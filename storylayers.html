@@ -131,7 +131,7 @@
       													</div>
     													<div class="btn-group" dropdown is-open="0">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Fill transparency" popover-trigger="mouseenter">
-        														Alpha <span class="caret"></span>
+                                                                {{layer.style.fillOpacity}} <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
       															<div range-slider min="0" max="100" model-max="layer.style.fillOpacity" pin-handle="min"></div>
@@ -173,7 +173,7 @@
       													</div>
     													<div class="btn-group" dropdown is-open="0">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Stroke transparency" popover-trigger="mouseenter">
-        														Alpha <span class="caret"></span>
+                                                                {{layer.style.strokeOpacity}} <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
       															<div range-slider min="0" max="100" model-max="layer.style.strokeOpacity" pin-handle="min"></div>
@@ -271,16 +271,16 @@
     													</div>
     													<div class="btn-group" dropdown is-open="0">
       														<span popover-placement="top" popover="Font size" popover-trigger="mouseenter">
-        														<input type="number" min="0" max="30" step="1" value="10" name="symbol-size"/>
+        														<input type="number" min="0" max="30" step="1" value="10" name="symbol-size" ng-model="layer.style.fontSize"/>
       														</span>
     													</div>
-    													<div class="btn-group" dropdown is-open="status.isopen">
+    													<div class="btn-group" dropdown is-open="status.isopen" click-value ng-model="layer.style.fontFamily">
       														<button type="button" class="btn btn-xs btn-primary dropdown-toggle" ng-disabled="disabled" popover-placement="top" popover="Font style" popover-trigger="mouseenter">
-        														Font <span class="caret"></span>
+                                                                {{layer.style.fontFamily}} <span class="caret"></span>
       														</button>
       														<ul class="dropdown-menu" role="menu">
-        														<li><a href="#">Arial</a></li>
-        														<li><a href="#">Helvetica</a></li>
+        														<li click-set param="layer.style.fontFamily"><a href="#">Arial</a></li>
+        														<li click-set param="layer.style.fontFamily"><a href="#">Helvetica</a></li>
       														</ul>
     													</div>
     													<div click-value ng-model="layer.style.fontColor" class="btn-group" dropdown is-open="0">

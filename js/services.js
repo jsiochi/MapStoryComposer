@@ -176,6 +176,12 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
         layerStyles.push(getLayerStyleTemplate(layerName, geomType));
     }
     
+    function preProcessStyle(styleDescriptor) {
+        styleDescriptor.fillOpacity = styleDescriptor.fillOpacity / 100;
+        styleDescriptor.strokeOpacity = styleDescriptor.strokeOpacity / 100;
+        styleDescriptor.fontOpacity = styleDescriptor.fontOpacity / 100;
+    }
+    
     var styleModel = {
         addLayers: function(layers) {
             var i = 0;
@@ -199,17 +205,17 @@ angular.module('storylayers.services', []).factory('drawSpace', function () {
                     fillColor: 'rgb(205, 92, 92)', 
                     fillOpacity: 54,
                     fillType: 'Solid',
-                    strokeDashstyle: 'solid',
+                    strokeDashstyle: 'Solid',
                     strokeWidth: 10,
                     strokeColor: 'rgb(205, 92, 92)',
-                    strokeOpacity: '0.54',
-                    label: null,
+                    strokeOpacity: 54,
+                    label: 'Choose',
                     fontFamily: 'Arial',
-                    fontSize: '12',
+                    fontSize: 12,
                     fontStyle: 'bold',
-                    fontColor: 'black',
+                    fontColor: 'rgb(0, 0, 0)',
                     fontWeight: '200',
-                    fontOpacity: '1',
+                    fontOpacity: 100,
                     classify: {}
             };
         }
